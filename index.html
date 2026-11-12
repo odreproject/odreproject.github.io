@@ -1,0 +1,2984 @@
+<!DOCTYPE html>
+<html lang="id" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MUHAMMAD AUDREY // PERSONA 5 ROYAL PORTFOLIO</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Anton (P5 Impact Display), Bebas Neue, Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;0,800;1,700;1,800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        display: ['"Anton"', 'sans-serif'],
+                        bebas: ['"Bebas Neue"', 'sans-serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        p5red: '#e60012',
+                        p5crimson: '#b8000e',
+                        p5cyan: '#00e5ff',
+                        p5yellow: '#ffe600',
+                        p5black: '#060608',
+                        p5dark: '#101014',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --p5-red: #e60012;
+            --p5-cyan: #00e5ff;
+            --p5-black: #060608;
+            --p5-white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        body {
+            background-color: var(--p5-black);
+            color: var(--p5-white);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+            cursor: default;
+        }
+
+        /* Authentic Persona 5 Halftone & Star Background */
+        .p5-halftone {
+            background-image: radial-gradient(rgba(230, 0, 18, 0.22) 2px, transparent 2px),
+                              radial-gradient(rgba(255, 255, 255, 0.05) 1.5px, transparent 1.5px);
+            background-size: 24px 24px;
+            background-position: 0 0, 12px 12px;
+        }
+
+        .p5-red-halftone {
+            background-color: #e60012;
+            background-image: radial-gradient(rgba(0, 0, 0, 0.28) 2.5px, transparent 2.5px);
+            background-size: 16px 16px;
+        }
+
+        /* Dynamic Diagonal Stripes */
+        .p5-stripes {
+            background: repeating-linear-gradient(
+                -45deg,
+                #060608,
+                #060608 14px,
+                #131318 14px,
+                #131318 28px
+            );
+        }
+
+        /* Persona 5 Skew & Jagged Shapes */
+        .p5-skew {
+            transform: skew(-10deg, -2deg);
+        }
+        .p5-skew-reverse {
+            transform: skew(10deg, 2deg);
+        }
+        .p5-card-skew {
+            transform: skew(-4deg);
+        }
+        .p5-card-unskew {
+            transform: skew(4deg);
+        }
+
+        /* Command Menu Button Styling (Desktop Sidebar) */
+        .p5-cmd-btn {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            width: 100%;
+            padding: 0.65rem 1.4rem;
+            margin-bottom: 0.45rem;
+            font-family: 'Anton', sans-serif;
+            font-size: 1.85rem;
+            line-height: 1;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: #ffffff;
+            background: #050507;
+            border: 3px solid #ffffff;
+            transform: skew(-14deg) rotate(-2deg);
+            transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 6px 6px 0px #000000;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .p5-cmd-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.16) 1.5px, transparent 1.5px);
+            background-size: 8px 8px;
+            opacity: 0.5;
+            transition: transform 0.35s ease, opacity 0.25s ease;
+            pointer-events: none;
+        }
+
+        .p5-cmd-btn::after {
+            content: '►';
+            position: absolute;
+            left: 0.55rem;
+            top: 50%;
+            transform: translate(-18px, -50%) scale(0.6);
+            opacity: 0;
+            font-size: 1.1rem;
+            color: var(--p5-cyan);
+            text-shadow: 2px 2px 0px #000;
+            transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+            pointer-events: none;
+        }
+
+        .p5-cmd-btn:hover {
+            transform: skew(-12deg) rotate(-1deg) translateX(14px) scale(1.06);
+            background: #16161f;
+            border-color: var(--p5-cyan);
+            box-shadow: -8px 6px 0px var(--p5-cyan), 8px -5px 0px var(--p5-red), 10px 10px 0px #000;
+        }
+
+        .p5-cmd-btn:hover::before {
+            transform: translateX(8px) scale(1.1);
+            opacity: 0.85;
+            background-image: radial-gradient(rgba(0, 229, 255, 0.28) 1.5px, transparent 1.5px);
+        }
+
+        .p5-cmd-btn:hover::after {
+            transform: translate(0, -50%) scale(1);
+            opacity: 1;
+        }
+
+        .p5-cmd-btn.active {
+            background: var(--p5-red);
+            color: #050507;
+            border-color: #ffffff;
+            transform: skew(-14deg) rotate(-2deg) translateX(14px) scale(1.06);
+            box-shadow: -10px -5px 0px var(--p5-cyan), 8px 8px 0px #000000;
+            z-index: 20;
+        }
+
+        .p5-cmd-btn.active::after {
+            content: '★';
+            transform: translate(0, -50%) scale(1) rotate(-12deg);
+            opacity: 1;
+            color: #ffe600;
+        }
+
+        .p5-cmd-btn.active .cmd-sub {
+            color: #ffffff;
+            background: #050507;
+            transform: translateX(14px);
+        }
+
+        .p5-cmd-btn:hover .cmd-sub {
+            transform: translateX(14px);
+            background: var(--p5-red);
+            color: #ffffff;
+        }
+
+        .cmd-sub {
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Mobile Bottom Nav Button Style */
+        .p5-mobile-nav-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 0.35rem 0.2rem;
+            font-family: 'Anton', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.05em;
+            color: #d4d4d8;
+            background: #0b0b0f;
+            border: 2px solid #3f3f46;
+            transform: skew(-8deg);
+            transition: all 0.18s ease;
+            cursor: pointer;
+        }
+        .p5-mobile-nav-btn.active {
+            background: var(--p5-red);
+            color: #ffffff;
+            border-color: #ffffff;
+            transform: skew(-8deg) translateY(-4px);
+            box-shadow: -3px 3px 0px var(--p5-cyan);
+        }
+
+        /* Giant Diagonal Header Banner */
+        .p5-giant-banner {
+            background: #f5f2eb;
+            color: #060608;
+            border: 4px solid #060608;
+            box-shadow: -10px 10px 0px var(--p5-red), 10px -8px 0px #000000;
+            transform: skew(-10deg) rotate(-1.5deg);
+        }
+        .p5-giant-text {
+            font-family: 'Anton', sans-serif;
+            line-height: 0.9;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+            color: #060608;
+            text-shadow: 4px 4px 0px var(--p5-red);
+        }
+
+        /* Jagged Comic Box Border & Interactive Target Hover */
+        .p5-comic-box {
+            position: relative;
+            background: #0c0c10;
+            border: 3px solid #ffffff;
+            box-shadow: 8px 8px 0px #e60012, 12px 12px 0px #000000;
+            transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
+            will-change: transform;
+        }
+
+        .p5-comic-box::after {
+            content: 'TARGET // !';
+            position: absolute;
+            top: -12px;
+            right: 14px;
+            background: #00e5ff;
+            color: #050507;
+            font-family: 'Anton', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.08em;
+            padding: 1px 8px;
+            border: 2px solid #050507;
+            box-shadow: 3px 3px 0px #e60012;
+            transform: skew(-14deg) translateY(8px) scale(0.75);
+            opacity: 0;
+            transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+            pointer-events: none;
+            z-index: 30;
+        }
+
+        .p5-comic-box:hover {
+            border-color: #00e5ff;
+            transform: translate(-5px, -5px) rotate(-0.4deg) scale(1.01);
+            box-shadow: 13px 13px 0px #e60012, -6px -6px 0px #00e5ff, 18px 18px 0px #000000;
+        }
+
+        .p5-comic-box:hover::after {
+            opacity: 1;
+            transform: skew(-14deg) translateY(0) scale(1);
+        }
+
+        /* Skill Row Interactive Hover Pulse */
+        .skill-row {
+            padding: 0.45rem 0.6rem;
+            margin: -0.45rem -0.6rem;
+            border: 2px solid transparent;
+            transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+        }
+        .skill-row:hover {
+            background: rgba(230, 0, 18, 0.14);
+            border-color: #00e5ff;
+            transform: skewX(-6deg) translateX(8px);
+            box-shadow: -5px 5px 0px #e60012;
+        }
+        .skill-row:hover .skill-score-badge {
+            background: #ffe600;
+            color: #050507;
+            padding: 0 0.45rem;
+            border: 2px solid #ffffff;
+            transform: scale(1.15) rotate(-4deg);
+            box-shadow: 3px 3px 0px #e60012;
+        }
+        .skill-score-badge {
+            display: inline-block;
+            transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .skill-fill {
+            width: 0%;
+            transition: width 1s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .skill-row:hover .skill-fill {
+            filter: brightness(1.3) drop-shadow(0 0 8px #00e5ff);
+        }
+
+        /* Spinning & Pulsing Star Animations */
+        @keyframes spinSlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes pulseStar {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.14) rotate(8deg); }
+        }
+        .spin-star {
+            animation: spinSlow 22s linear infinite;
+        }
+        .pulse-star {
+            animation: pulseStar 3.2s ease-in-out infinite;
+        }
+
+        /* =====================================================
+           CINEMATIC P5R LOADING SCREEN & SPLIT-RIP EXIT STYLES
+           ===================================================== */
+        @keyframes tunnelZoom {
+            0% { transform: translate(-50%, -50%) scale(0.25) rotate(0deg); opacity: 0.9; }
+            80% { opacity: 0.45; }
+            100% { transform: translate(-50%, -50%) scale(3.2) rotate(90deg); opacity: 0; }
+        }
+        .p5-tunnel-star {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.25);
+            pointer-events: none;
+            animation: tunnelZoom 4.8s linear infinite;
+        }
+        .p5-tunnel-star:nth-child(2) { animation-delay: 1.2s; }
+        .p5-tunnel-star:nth-child(3) { animation-delay: 2.4s; }
+        .p5-tunnel-star:nth-child(4) { animation-delay: 3.6s; }
+
+        @keyframes marqueeSlide {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .p5-marquee-track {
+            display: flex;
+            width: 200%;
+            animation: marqueeSlide 14s linear infinite;
+        }
+
+        @keyframes callingCardFloat {
+            0%, 100% { transform: perspective(1000px) rotateY(-6deg) rotateX(4deg) rotateZ(-2deg) translateY(0px); }
+            50% { transform: perspective(1000px) rotateY(6deg) rotateX(-3deg) rotateZ(-1deg) translateY(-10px); }
+        }
+        .p5-calling-card-3d {
+            animation: callingCardFloat 4s ease-in-out infinite;
+            transform-style: preserve-3d;
+        }
+
+        @keyframes ransomPulse {
+            0%, 100% { transform: skew(-10deg) rotate(-2deg) scale(1); }
+            50% { transform: skew(-10deg) rotate(1.5deg) scale(1.04); }
+        }
+        .p5-ransom-title {
+            animation: ransomPulse 2.4s ease-in-out infinite;
+        }
+
+        @keyframes startBtnReadyPulse {
+            0%, 100% {
+                box-shadow: -8px 8px 0px #e60012, 8px -8px 0px #00e5ff, 12px 12px 0px #000;
+                transform: skew(-12deg) rotate(-1.5deg) scale(1);
+            }
+            50% {
+                box-shadow: -12px 10px 0px #00e5ff, 12px -10px 0px #e60012, 16px 16px 0px #000;
+                transform: skew(-12deg) rotate(-1.5deg) scale(1.05);
+            }
+        }
+        .p5-start-ready {
+            animation: startBtnReadyPulse 1.3s ease-in-out infinite;
+        }
+
+        /* Split-Screen Diagonal Rip Exit Shutter */
+        #loading-screen {
+            transition: opacity 0.35s ease;
+        }
+        .boot-shutter-top {
+            position: absolute;
+            inset: 0;
+            background: #060608;
+            clip-path: polygon(0 0, 100% 0, 100% 38%, 0 68%);
+            transition: transform 0.65s cubic-bezier(0.77, 0, 0.175, 1);
+            z-index: 5;
+            pointer-events: none;
+        }
+        .boot-shutter-bottom {
+            position: absolute;
+            inset: 0;
+            background: #100406;
+            clip-path: polygon(0 67%, 100% 37%, 100% 100%, 0 100%);
+            transition: transform 0.65s cubic-bezier(0.77, 0, 0.175, 1);
+            z-index: 5;
+            pointer-events: none;
+        }
+        .boot-rip-line {
+            position: absolute;
+            top: 52%;
+            left: -20%;
+            width: 140%;
+            height: 18px;
+            background: #00e5ff;
+            border-top: 5px solid #ffffff;
+            border-bottom: 5px solid #e60012;
+            transform: rotate(-14.5deg) scaleX(0);
+            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 40;
+            box-shadow: 0 0 35px #00e5ff, 0 0 15px #ffffff;
+            pointer-events: none;
+        }
+        .boot-showtime-banner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-14deg) scale(0.3);
+            opacity: 0;
+            transition: all 0.26s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: 50;
+            pointer-events: none;
+        }
+        #loading-screen.ripping-open .boot-rip-line {
+            transform: rotate(-14.5deg) scaleX(1);
+        }
+        #loading-screen.ripping-open .boot-showtime-banner {
+            transform: translate(-50%, -50%) rotate(-11deg) scale(1.1);
+            opacity: 1;
+        }
+        #loading-screen.ripping-open .boot-shutter-top {
+            transform: translate(-45%, -95%) rotate(-8deg);
+        }
+        #loading-screen.ripping-open .boot-shutter-bottom {
+            transform: translate(45%, 95%) rotate(-8deg);
+        }
+        #loading-screen.ripping-open .boot-center-stage {
+            transform: scale(1.18) skewX(-10deg);
+            opacity: 0;
+            transition: all 0.32s ease-in;
+        }
+
+        /* Ultra-Dynamic Multi-Blade All-Out Screen Slash Transition */
+        #slash-transition {
+            pointer-events: none;
+            z-index: 95;
+            perspective: 1200px;
+        }
+        .slash-blade {
+            position: absolute;
+            left: -25%;
+            width: 150%;
+            will-change: transform;
+        }
+        .slash-blade-1 {
+            top: -6%;
+            height: 34%;
+            background: #e60012;
+            border-bottom: 6px solid #ffffff;
+            transform: translateX(-130%) rotate(-4deg) skewX(-25deg);
+            transition: transform 0.36s cubic-bezier(0.77, 0, 0.175, 1);
+            box-shadow: 0 12px 0 #000;
+        }
+        .slash-blade-2 {
+            top: 24%;
+            height: 30%;
+            background: #060608;
+            border-top: 5px solid #00e5ff;
+            border-bottom: 5px solid #ffffff;
+            transform: translateX(130%) rotate(3deg) skewX(-25deg);
+            transition: transform 0.38s cubic-bezier(0.77, 0, 0.175, 1) 0.03s;
+            box-shadow: 0 14px 0 #e60012;
+        }
+        .slash-blade-3 {
+            top: 50%;
+            height: 28%;
+            background: #f5f2eb;
+            border-top: 6px solid #060608;
+            border-bottom: 6px solid #e60012;
+            transform: translateX(-130%) rotate(-2.5deg) skewX(-25deg);
+            transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1) 0.06s;
+        }
+        .slash-blade-4 {
+            bottom: -8%;
+            height: 34%;
+            background: #00e5ff;
+            border-top: 6px solid #060608;
+            transform: translateX(130%) rotate(3.5deg) skewX(-25deg);
+            transition: transform 0.42s cubic-bezier(0.77, 0, 0.175, 1) 0.08s;
+        }
+        .slash-center-card {
+            position: relative;
+            z-index: 20;
+            transform: scale(0.4) rotate(-12deg) skewX(-16deg);
+            opacity: 0;
+            transition: all 0.28s cubic-bezier(0.34, 1.56, 0.64, 1) 0.08s;
+        }
+        #slash-transition.active .slash-blade-1 {
+            transform: translateX(0%) rotate(-4deg) skewX(-25deg);
+        }
+        #slash-transition.active .slash-blade-2 {
+            transform: translateX(0%) rotate(3deg) skewX(-25deg);
+        }
+        #slash-transition.active .slash-blade-3 {
+            transform: translateX(0%) rotate(-2.5deg) skewX(-25deg);
+        }
+        #slash-transition.active .slash-blade-4 {
+            transform: translateX(0%) rotate(3.5deg) skewX(-25deg);
+        }
+        #slash-transition.active .slash-center-card {
+            transform: scale(1) rotate(-4deg) skewX(-12deg);
+            opacity: 1;
+        }
+
+        /* 3D Camera Whip-Pan & Staggered Section Enter Animation */
+        #main-stage-container {
+            perspective: 1400px;
+            transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .p5-section-enter {
+            animation: p5CameraWhipIn 0.58s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            transform-origin: left center;
+        }
+        @keyframes p5CameraWhipIn {
+            0% {
+                opacity: 0;
+                transform: perspective(1200px) rotateY(-8deg) rotateZ(-1.5deg) skewX(-6deg) translateX(60px) scale(0.94);
+                filter: drop-shadow(-16px 12px 0px #00e5ff);
+            }
+            60% {
+                opacity: 1;
+                transform: perspective(1200px) rotateY(1.5deg) rotateZ(0.3deg) skewX(1deg) translateX(-6px) scale(1.01);
+                filter: drop-shadow(8px 8px 0px #e60012);
+            }
+            100% {
+                opacity: 1;
+                transform: perspective(1200px) rotateY(0deg) rotateZ(0deg) skewX(0deg) translateX(0) scale(1);
+                filter: none;
+            }
+        }
+
+        /* Staggered Child Card Pop-in when switching menus */
+        .p5-stagger-item {
+            opacity: 0;
+        }
+        .p5-section-enter .p5-stagger-item {
+            animation: p5CardPopIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            animation-delay: calc(var(--stagger-index, 0) * 65ms + 80ms);
+        }
+        .p5-section-enter .p5-stagger-item:not([style*="--stagger-index"]) {
+            animation-delay: 80ms;
+        }
+        @keyframes p5CardPopIn {
+            0% {
+                opacity: 0;
+                transform: translateY(32px) translateX(-18px) skewX(-8deg) scale(0.92);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) translateX(0) skewX(0deg) scale(1);
+            }
+        }
+
+        /* Persona 5 BGM Equalizer Animation */
+        @keyframes eqBar1 {
+            0%, 100% { height: 25%; }
+            50% { height: 100%; }
+        }
+        @keyframes eqBar2 {
+            0%, 100% { height: 90%; }
+            33% { height: 30%; }
+            66% { height: 100%; }
+        }
+        @keyframes eqBar3 {
+            0%, 100% { height: 40%; }
+            50% { height: 95%; }
+        }
+        .bgm-playing .eq-bar-1 { animation: eqBar1 0.55s ease-in-out infinite; }
+        .bgm-playing .eq-bar-2 { animation: eqBar2 0.45s ease-in-out infinite; }
+        .bgm-playing .eq-bar-3 { animation: eqBar3 0.65s ease-in-out infinite; }
+        .bgm-playing .eq-bar-4 { animation: eqBar2 0.5s ease-in-out infinite reverse; }
+
+        /* Dossier Preview Flash Highlight */
+        @keyframes dossierFlash {
+            0% { box-shadow: 0 0 0 0 rgba(0, 229, 255, 0.9), 12px 12px 0 #e60012; border-color: #00e5ff; }
+            50% { box-shadow: 0 0 35px 8px rgba(0, 229, 255, 0.65), -10px -10px 0 #ffe600; border-color: #ffe600; }
+            100% { box-shadow: 12px 12px 0 #e60012; border-color: #ffffff; }
+        }
+        .dossier-preview-pulse {
+            animation: dossierFlash 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+    </style>
+</head>
+<body class="p5-halftone min-h-screen relative selection:bg-p5red selection:text-white">
+
+    <!-- ==========================================
+         0. AUDIO ELEMENTS & BOTTOM-LEFT BGM + MULTI-SFX WIDGET
+         ========================================== -->
+    <!-- Background Music -->
+    <audio id="bgm-audio" autoplay loop preload="auto">
+        <source src="https://hollow-coffee-keloxl1x.edgeone.dev/" type="audio/mpeg">
+        <source src="https://hollow-coffee-keloxl1x.edgeone.dev/" type="audio/wav">
+    </audio>
+
+    <!-- Hidden File Input for Optional Local Override -->
+    <input type="file" id="custom-bgm-input" accept="audio/*" class="hidden" onchange="loadCustomBgmFile(event)">
+
+    <!-- Fixed Bottom-Left BGM & Multi-SFX HUD Controller -->
+    <div class="fixed bottom-16 sm:bottom-4 left-3 sm:left-4 z-[9999] flex flex-wrap items-center gap-1.5 sm:gap-2 select-none pointer-events-auto">
+        <!-- Main BGM ON/OFF Button -->
+        <button id="bgm-toggle-btn" type="button" onclick="window.toggleBgm(event)" class="group relative bg-black hover:bg-p5red text-white border-2 sm:border-3 border-white px-3 sm:px-4 py-2 sm:py-2.5 transform -skew-x-12 rotate-[-1deg] transition-all shadow-[4px_4px_0_#e60012] sm:shadow-[6px_6px_0_#e60012] flex items-center gap-2 sm:gap-3 cursor-pointer pointer-events-auto" title="Click to Turn BGM ON / OFF">
+            <!-- Equalizer Bars -->
+            <div id="bgm-eq-box" class="w-5 sm:w-6 h-4 sm:h-5 bg-p5red group-hover:bg-black border border-white p-0.5 sm:p-1 flex items-end justify-between gap-0.5">
+                <span class="eq-bar-1 w-1 h-1.5 bg-p5cyan transition-all"></span>
+                <span class="eq-bar-2 w-1 h-2 bg-white transition-all"></span>
+                <span class="eq-bar-3 w-1 h-1 bg-p5cyan transition-all"></span>
+                <span class="eq-bar-4 w-1 h-2 bg-white transition-all"></span>
+            </div>
+
+            <!-- Label -->
+            <div class="text-left leading-none pr-1">
+                <span id="bgm-mode-label" class="block font-display text-[9px] sm:text-[10px] tracking-widest text-p5cyan group-hover:text-p5yellow uppercase">SYSTEM BGM</span>
+                <span id="bgm-status-text" class="font-display text-sm sm:text-lg tracking-wider text-p5yellow uppercase">BGM: ON</span>
+            </div>
+
+            <!-- Icon -->
+            <span id="bgm-icon-wrap" class="flex items-center justify-center">
+                <i id="bgm-icon" data-lucide="volume-2" class="w-4 sm:w-5 h-4 sm:h-5 text-p5cyan group-hover:scale-110 transition-transform"></i>
+            </span>
+        </button>
+    </div>
+
+    <!-- ==========================================
+         1. PERSONA 5 ROYAL CINEMATIC INTRO & BOOT SCREEN
+         ========================================== -->
+    <div id="loading-screen" class="fixed inset-0 z-[100] bg-transparent flex flex-col justify-between overflow-hidden select-none">
+        
+        <!-- Split-Screen Diagonal Shutters (Rip Apart When Clicking Start) -->
+        <div class="boot-shutter-top p5-halftone">
+            <!-- Hypnotic Concentric Star Tunnel Layer -->
+            <div class="absolute inset-0 overflow-hidden pointer-events-none opacity-35">
+                <svg class="p5-tunnel-star w-72 h-72" viewBox="0 0 100 100">
+                    <polygon points="50,0 63,35 100,35 70,57 82,95 50,72 18,95 30,57 0,35 37,35" fill="none" stroke="#e60012" stroke-width="4"/>
+                </svg>
+                <svg class="p5-tunnel-star w-72 h-72" viewBox="0 0 100 100">
+                    <polygon points="50,0 63,35 100,35 70,57 82,95 50,72 18,95 30,57 0,35 37,35" fill="none" stroke="#ffffff" stroke-width="3"/>
+                </svg>
+                <svg class="p5-tunnel-star w-72 h-72" viewBox="0 0 100 100">
+                    <polygon points="50,0 63,35 100,35 70,57 82,95 50,72 18,95 30,57 0,35 37,35" fill="none" stroke="#00e5ff" stroke-width="3"/>
+                </svg>
+                <svg class="p5-tunnel-star w-72 h-72" viewBox="0 0 100 100">
+                    <polygon points="50,0 63,35 100,35 70,57 82,95 50,72 18,95 30,57 0,35 37,35" fill="none" stroke="#e60012" stroke-width="5"/>
+                </svg>
+            </div>
+            <!-- Top Diagonal Red Slash & Moving Marquee Tape -->
+            <div class="absolute -top-24 -left-20 w-[140%] h-64 bg-p5red p5-red-halftone transform -rotate-6 border-b-8 border-white shadow-[0_14px_0_#000]"></div>
+            <div class="absolute top-12 sm:top-16 -left-10 w-[120%] bg-black border-y-3 border-white py-1 transform -rotate-3 overflow-hidden shadow-[0_6px_0_#00e5ff]">
+                <div class="p5-marquee-track font-display text-xs sm:text-sm tracking-[0.25em] text-white/90 uppercase whitespace-nowrap">
+                    <span class="mx-4">★ TAKE YOUR HEART // PHANTOM THIEVES OF CREATIVITY ★ METAVERSE NAVIGATOR v2.026 ★ MUHAMMAD AUDREY AL FIKRI // GRAPHIC DESIGNER ★</span>
+                    <span class="mx-4">★ TAKE YOUR HEART // PHANTOM THIEVES OF CREATIVITY ★ METAVERSE NAVIGATOR v2.026 ★ MUHAMMAD AUDREY AL FIKRI // GRAPHIC DESIGNER ★</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="boot-shutter-bottom p5-stripes">
+            <!-- Bottom Diagonal Red Slash & Moving Marquee Tape -->
+            <div class="absolute -bottom-24 -right-20 w-[140%] h-64 bg-p5red p5-red-halftone transform -rotate-6 border-t-8 border-white shadow-[0_-14px_0_#00e5ff]"></div>
+            <div class="absolute bottom-14 sm:bottom-20 -left-10 w-[120%] bg-white border-y-3 border-black py-1 transform rotate-2 overflow-hidden shadow-[0_6px_0_#e60012]">
+                <div class="p5-marquee-track font-display text-xs sm:text-sm tracking-[0.25em] text-black uppercase whitespace-nowrap" style="animation-direction: reverse;">
+                    <span class="mx-4">⚡ CALLING CARD PROTOCOL READY // 18 SELECTED WORKS // 5 MOTION SHOWREELS // ESPORTS & BRAND VISUAL IDENTITY ⚡</span>
+                    <span class="mx-4">⚡ CALLING CARD PROTOCOL READY // 18 SELECTED WORKS // 5 MOTION SHOWREELS // ESPORTS & BRAND VISUAL IDENTITY ⚡</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Diagonal Rip Laser Line & "SHOWTIME!!" Cut-in (Triggered on Start Click) -->
+        <div class="boot-rip-line"></div>
+        <div class="boot-showtime-banner bg-black border-4 sm:border-8 border-white px-8 sm:px-14 py-4 sm:py-6 shadow-[14px_14px_0_#e60012,-12px_-12px_0_#00e5ff]">
+            <span class="block font-display text-xs sm:text-base text-p5cyan tracking-widest uppercase text-center">ALL-OUT CREATIVE ATTACK</span>
+            <span class="font-display text-5xl sm:text-8xl text-white tracking-wider uppercase drop-shadow-[6px_6px_0_#e60012]">SHOWTIME!!</span>
+        </div>
+
+        <!-- Top Status Bar -->
+        <div class="boot-center-stage relative z-20 p-4 sm:p-6 md:px-10 flex justify-between items-start">
+            <div class="bg-black border-2 sm:border-4 border-white px-3 sm:px-5 py-1.5 sm:py-2 transform -skew-x-12 shadow-[4px_4px_0_#00e5ff] flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-p5red animate-ping"></span>
+                <span class="font-display text-xs sm:text-xl tracking-wider text-white">METAVERSE OS // CALLING CARD v2.026</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <div class="hidden sm:block bg-black text-p5cyan font-display px-3 py-1 text-sm border-2 border-white transform -skew-x-12">
+                    ARCANA: THE CREATOR
+                </div>
+                <div class="bg-white text-black font-display px-3 sm:px-4 py-1 text-sm sm:text-lg border-2 border-black transform skew-x-6 shadow-[4px_4px_0_#e60012]">
+                    DEPOK, ID
+                </div>
+            </div>
+        </div>
+
+        <!-- Centerpiece 3D Calling Card & Interactive Boot HUD -->
+        <div class="boot-center-stage relative z-20 my-auto px-4 sm:px-6 max-w-4xl mx-auto w-full text-center">
+            
+            <!-- 3D Tilted Calling Card Emblem -->
+            <div class="p5-calling-card-3d inline-block mb-4 sm:mb-6">
+                <div class="relative bg-black border-4 border-white p-4 sm:p-6 shadow-[10px_10px_0_#e60012,-8px_-8px_0_#00e5ff] transform -rotate-2">
+                    <span class="absolute -top-3.5 -left-3.5 bg-p5cyan text-black font-display text-xs sm:text-sm px-3 py-0.5 border-2 border-black transform -skew-x-12 shadow-[3px_3px_0_#fff]">
+                        TARGET CONFIRMED // !
+                    </span>
+                    <span class="absolute -bottom-3 -right-3 bg-p5yellow text-black font-display text-xs sm:text-sm px-3 py-0.5 border-2 border-black transform -rotate-6 shadow-[3px_3px_0_#e60012]">
+                        CODE: ODRE
+                    </span>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+                        <div class="relative w-20 h-20 sm:w-24 sm:h-24 flex-shrink-0">
+                            <svg class="absolute inset-0 w-full h-full spin-star drop-shadow-[3px_3px_0_#e60012]" viewBox="0 0 100 100">
+                                <polygon points="50,0 63,35 100,35 70,57 82,95 50,72 18,95 30,57 0,35 37,35" fill="#e60012" stroke="#ffffff" stroke-width="5"/>
+                            </svg>
+                            <div class="absolute inset-2.5 rounded-full border-3 border-white overflow-hidden bg-zinc-950 shadow-inner">
+                                <img src="https://drive.google.com/thumbnail?id=1OZapS1l2NoFiHeen7qogymkgq14OE8PI&sz=w1000"
+                                     onerror="this.src='https://placehold.co/200x200/e60012/ffffff?text=ODRE'"
+                                     alt="Audrey" class="w-full h-full object-cover object-top">
+                            </div>
+                        </div>
+
+                        <div class="text-center sm:text-left">
+                            <div class="flex flex-wrap items-center justify-center sm:justify-start gap-1.5 mb-1">
+                                <span class="bg-p5red text-white font-display text-xs sm:text-sm px-2.5 py-0.5 border border-white transform -skew-x-12">CONFIDANT DOSSIER</span>
+                                <span class="bg-zinc-900 text-p5cyan font-display text-xs sm:text-sm px-2.5 py-0.5 border border-p5cyan transform skew-x-6">LV. 99</span>
+                            </div>
+                            <h1 class="p5-ransom-title font-display text-4xl sm:text-6xl md:text-7xl text-white uppercase tracking-tight leading-none drop-shadow-[5px_5px_0_#e60012]">
+                                MUHAMMAD AUDREY
+                            </h1>
+                            <div class="mt-2 inline-block bg-white text-black font-display text-lg sm:text-2xl md:text-3xl px-4 py-0.5 border-3 border-black transform -skew-x-12 shadow-[4px_4px_0_#00e5ff]">
+                                GRAPHIC DESIGNER
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dynamic Stat Badges Pop-in Row -->
+            <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-5">
+                <div id="boot-badge-1" class="opacity-0 transform translate-y-4 transition-all duration-300 bg-black border-2 border-white px-3 py-1 -skew-x-12 shadow-[3px_3px_0_#e60012]">
+                    <span class="font-display text-xs sm:text-sm text-p5cyan">★ 18 PORTFOLIO FILES</span>
+                </div>
+                <div id="boot-badge-2" class="opacity-0 transform translate-y-4 transition-all duration-300 bg-black border-2 border-white px-3 py-1 -skew-x-12 shadow-[3px_3px_0_#00e5ff]">
+                    <span class="font-display text-xs sm:text-sm text-p5yellow">★ 5 MOTION SHOWREELS</span>
+                </div>
+                <div id="boot-badge-3" class="opacity-0 transform translate-y-4 transition-all duration-300 bg-black border-2 border-white px-3 py-1 -skew-x-12 shadow-[3px_3px_0_#e60012]">
+                    <span class="font-display text-xs sm:text-sm text-white">★ GRAPHIC DESIGN EXPERTISE</span>
+                </div>
+            </div>
+
+            <!-- Segmented Jagged Progress Bar & Live Percentage -->
+            <div class="max-w-md sm:max-w-xl mx-auto">
+                <div class="flex justify-between items-end mb-1.5 font-display">
+                    <span id="loading-status-text" class="text-xs sm:text-base md:text-lg text-white tracking-wider uppercase bg-black px-3 py-0.5 border-2 border-white transform -skew-x-12 shadow-[3px_3px_0_#e60012]">
+                        INITIALIZING METAVERSE NAVIGATOR...
+                    </span>
+                    <span id="loading-percent" class="text-3xl sm:text-5xl text-p5yellow drop-shadow-[4px_4px_0_#000] italic">
+                        000%
+                    </span>
+                </div>
+                <div class="w-full h-6 sm:h-8 bg-black border-3 sm:border-4 border-white p-1 transform -skew-x-12 shadow-[6px_6px_0_#000] relative overflow-hidden">
+                    <div id="loading-bar" class="h-full bg-gradient-to-r from-p5red via-p5yellow to-p5cyan transition-all duration-100 relative" style="width: 0%"></div>
+                    <div class="absolute inset-0 flex justify-evenly pointer-events-none">
+                        <span class="w-1 h-full bg-black/70 transform -skew-x-12"></span>
+                        <span class="w-1 h-full bg-black/70 transform -skew-x-12"></span>
+                        <span class="w-1 h-full bg-black/70 transform -skew-x-12"></span>
+                        <span class="w-1 h-full bg-black/70 transform -skew-x-12"></span>
+                        <span class="w-1 h-full bg-black/70 transform -skew-x-12"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Start Button -->
+            <div class="mt-6 sm:mt-7">
+                <button id="enter-palace-btn" type="button" onclick="dismissLoadingScreen()" class="group relative inline-flex items-center gap-3 sm:gap-4 bg-white text-black font-display text-xl sm:text-3xl px-7 sm:px-10 py-3 sm:py-4 border-3 sm:border-4 border-black transform -skew-x-12 hover:bg-p5cyan transition-all shadow-[6px_6px_0_#e60012] cursor-pointer min-h-[54px]">
+                    <span id="enter-btn-text">TAKE YOUR TIME... [SKIP]</span>
+                    <i data-lucide="zap" class="w-6 sm:w-7 h-6 sm:h-7 fill-current text-p5red group-hover:text-black group-hover:rotate-12 transition-transform"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="boot-center-stage relative z-20 p-4 sm:p-6 md:px-10 flex justify-between items-end text-xs sm:text-base">
+            <div class="bg-black border-2 border-white px-3 sm:px-4 py-1.5 transform -rotate-1 shadow-[3px_3px_0_#000]">
+                <p class="font-display tracking-widest text-white">
+                    <span class="text-p5red">★</span> DIGITAL IMAGING <span class="text-p5cyan">//</span> VISUAL STORYTELLING
+                </p>
+            </div>
+            <div class="hidden sm:block text-right font-display text-black bg-p5yellow px-4 py-1 border-2 border-black transform skew-x-6 shadow-[3px_3px_0_#000]">
+                CLICK BUTTON TO SEND CALLING CARD
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         2. ULTRA-DYNAMIC MULTI-BLADE SCREEN SLASH TRANSITION
+         ========================================== -->
+    <div id="slash-transition" class="fixed inset-0 overflow-hidden flex items-center justify-center">
+        <div class="slash-blade slash-blade-1 p5-red-halftone flex items-center justify-end pr-16">
+            <span class="font-display text-4xl sm:text-6xl text-black/40 tracking-widest uppercase select-none">ALL-OUT CREATIVE // PHANTOM</span>
+        </div>
+        <div class="slash-blade slash-blade-2 p5-stripes flex items-center justify-start pl-16">
+            <span class="font-display text-3xl sm:text-5xl text-p5cyan/30 tracking-widest uppercase select-none">TAKE YOUR HEART ★ ODRE PORTFOLIO</span>
+        </div>
+        <div class="slash-blade slash-blade-3 flex items-center justify-end pr-20">
+            <span class="font-display text-4xl sm:text-6xl text-black/20 tracking-widest uppercase select-none">CALLING CARD ACTIVATED</span>
+        </div>
+        <div class="slash-blade slash-blade-4 flex items-center justify-start pl-20">
+            <span class="font-display text-3xl sm:text-5xl text-black/30 tracking-widest uppercase select-none">GRAPHIC DESIGNER // 2026</span>
+        </div>
+
+        <!-- Center Kinetic Typography Calling Card Banner -->
+        <div class="slash-center-card bg-black border-4 sm:border-8 border-white px-8 sm:px-14 py-5 sm:py-8 shadow-[14px_14px_0_#e60012,-10px_-10px_0_#00e5ff] text-center">
+            <div class="flex items-center justify-center gap-2 mb-1">
+                <span class="bg-p5red text-white font-display text-xs sm:text-sm px-3 py-0.5 border border-white tracking-widest uppercase">
+                    &gt;&gt; INFILTRATING SECTOR &lt;&lt;
+                </span>
+            </div>
+            <div class="flex items-center justify-center gap-4">
+                <svg class="w-8 h-8 sm:w-12 sm:h-12 text-p5yellow spin-star flex-shrink-0" viewBox="0 0 100 100">
+                    <polygon points="50,0 63,35 100,35 70,57 82,95 50,72 18,95 30,57 0,35 37,35" fill="currentColor" stroke="#e60012" stroke-width="5"/>
+                </svg>
+                <span id="slash-section-label" class="font-display text-5xl sm:text-7xl md:text-8xl text-white tracking-wider uppercase drop-shadow-[5px_5px_0_#e60012]">
+                    SKILL
+                </span>
+                <svg class="w-8 h-8 sm:w-12 sm:h-12 text-p5cyan spin-star flex-shrink-0" viewBox="0 0 100 100">
+                    <polygon points="50,0 63,35 100,35 70,57 82,95 50,72 18,95 30,57 0,35 37,35" fill="currentColor" stroke="#ffffff" stroke-width="5"/>
+                </svg>
+            </div>
+            <p id="slash-section-sub" class="font-display text-xs sm:text-base text-p5cyan tracking-widest uppercase mt-1">
+                ステータス // CONFIDANT DOSSIER
+            </p>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         3. MAIN PERSONA 5 INTERFACE LAYOUT
+         ========================================== -->
+    <div class="min-h-screen flex flex-col lg:flex-row relative overflow-hidden pb-20 lg:pb-0">
+
+        <!-- Ambient Spinning Background Stars -->
+        <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+            <svg class="absolute -top-24 -right-24 w-96 h-96 opacity-20 spin-star" viewBox="0 0 100 100">
+                <polygon points="50,0 63,35 100,35 70,57 82,95 50,72 18,95 30,57 0,35 37,35" fill="#e60012" stroke="#ffffff" stroke-width="3"/>
+                <polygon points="50,15 59,38 85,38 64,53 72,78 50,62 28,78 36,53 15,38 41,38" fill="#060608" stroke="#ffffff" stroke-width="2"/>
+            </svg>
+            <svg class="absolute bottom-12 right-1/3 w-44 h-44 opacity-15 pulse-star" viewBox="0 0 100 100">
+                <polygon points="50,0 63,35 100,35 70,57 82,95 50,72 18,95 30,57 0,35 37,35" fill="#000000" stroke="#e60012" stroke-width="5"/>
+            </svg>
+        </div>
+
+        <!-- ==========================================
+             DESKTOP SIDEBAR MENU (Hidden on mobile)
+             ========================================== -->
+        <aside class="hidden lg:flex lg:w-[320px] xl:w-[360px] lg:fixed lg:inset-y-0 lg:left-0 z-30 flex-col justify-between p-6 bg-gradient-to-b from-black via-black/95 to-p5red/20 border-r-4 border-white shadow-[10px_0_30px_rgba(0,0,0,0.9)]">
+            <div>
+                <div class="flex items-center justify-between gap-2 mb-4">
+                    <div class="relative inline-block">
+                        <div class="bg-p5red text-white font-display text-xs tracking-widest px-3 py-0.5 border-2 border-white transform -skew-x-12 inline-block shadow-[3px_3px_0_#000]">
+                            システム // COMMAND
+                        </div>
+                        <div class="bg-black border-2 border-p5red px-4 py-1.5 -mt-1 ml-2 transform -skew-x-6 shadow-[4px_4px_0_#e60012]">
+                            <p class="font-display text-lg text-white tracking-wider">
+                                「PORTFOLIO」 &amp; 「CV 2026」 <span class="text-p5red font-black">!</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <nav class="flex flex-col gap-1 pr-3 pt-1" aria-label="Persona Desktop Command Menu">
+                    <button onclick="switchSection('profile')" onmouseenter="playP5Sfx('hover')" data-target="profile" class="p5-cmd-btn active">
+                        <span class="cmd-sub text-[10px] font-sans font-extrabold px-1.5 py-0.5 bg-p5red text-white mr-auto">01</span>
+                        <span>PROFILE</span>
+                    </button>
+                    <button onclick="switchSection('skill')" onmouseenter="playP5Sfx('hover')" data-target="skill" class="p5-cmd-btn">
+                        <span class="cmd-sub text-[10px] font-sans font-extrabold px-1.5 py-0.5 bg-zinc-800 text-zinc-300 mr-auto">02</span>
+                        <span>SKILL</span>
+                    </button>
+                    <button onclick="switchSection('quests')" onmouseenter="playP5Sfx('hover')" data-target="quests" class="p5-cmd-btn">
+                        <span class="cmd-sub text-[10px] font-sans font-extrabold px-1.5 py-0.5 bg-zinc-800 text-zinc-300 mr-auto">03</span>
+                        <span>QUESTS</span>
+                    </button>
+                    <button onclick="switchSection('works')" onmouseenter="playP5Sfx('hover')" data-target="works" class="p5-cmd-btn">
+                        <span class="cmd-sub text-[10px] font-sans font-extrabold px-1.5 py-0.5 bg-zinc-800 text-zinc-300 mr-auto">04</span>
+                        <span>WORKS</span>
+                    </button>
+                    <button onclick="switchSection('showreel')" onmouseenter="playP5Sfx('hover')" data-target="showreel" class="p5-cmd-btn">
+                        <span class="cmd-sub text-[10px] font-sans font-extrabold px-1.5 py-0.5 bg-zinc-800 text-zinc-300 mr-auto">05</span>
+                        <span>SHOWREEL</span>
+                    </button>
+                    <button onclick="switchSection('contact')" onmouseenter="playP5Sfx('hover')" data-target="contact" class="p5-cmd-btn">
+                        <span class="cmd-sub text-[10px] font-sans font-extrabold px-1.5 py-0.5 bg-zinc-800 text-zinc-300 mr-auto">06</span>
+                        <span>CONTACT</span>
+                    </button>
+                </nav>
+            </div>
+
+            <div class="mt-6 pt-4 border-t-2 border-white/20 pb-12">
+                <div class="relative bg-p5red border-3 border-white p-3 transform -skew-x-6 mb-4 shadow-[6px_6px_0_#000] flex items-center gap-3">
+                    <div class="w-14 h-14 rounded-full border-3 border-white overflow-hidden bg-black flex-shrink-0">
+                        <img src="https://drive.google.com/thumbnail?id=1OZapS1l2NoFiHeen7qogymkgq14OE8PI&sz=w1000" 
+                             onerror="this.src='https://placehold.co/200x200/e60012/ffffff?text=ODRE'"
+                             alt="Audrey Cut-in" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="leading-tight">
+                        <div class="bg-black text-p5cyan font-display text-xs px-2 py-0.5 inline-block mb-0.5">GRAPHIC DESIGNER</div>
+                        <h4 class="font-display text-lg text-white tracking-wide">M. AUDREY (ODRE)</h4>
+                        <p class="text-xs text-white/90 font-bold">LV. 99 • GPA 3.49</p>
+                    </div>
+                </div>
+
+                <button onclick="toggleViewMode()" id="desktop-view-mode-btn" class="w-full mb-4 bg-zinc-900 hover:bg-p5cyan hover:text-black text-white font-display text-sm tracking-wider py-2 px-3 border-2 border-white transform -skew-x-6 transition-colors flex items-center justify-between shadow-[4px_4px_0_#e60012] cursor-pointer">
+                    <span id="view-mode-text">VIEW MODE: GAME MENU</span>
+                    <i data-lucide="layers" class="w-4 h-4"></i>
+                </button>
+
+                <div class="flex items-baseline justify-between bg-black px-4 py-2 border-2 border-white transform -rotate-2 shadow-[5px_5px_0_#e60012]">
+                    <span class="font-display text-2xl text-p5red italic">EXP //</span>
+                    <span class="font-display text-3xl text-white tracking-wider italic">¥ 10,960,000</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- ==========================================
+             MOBILE FIXED BOTTOM NAVIGATION BAR
+             ========================================== -->
+        <nav aria-label="Mobile Navigation" class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-black/95 border-t-3 border-white px-2 py-2 flex items-center justify-around gap-1 backdrop-blur-md shadow-[0_-8px_20px_rgba(0,0,0,0.8)]">
+            <button onclick="switchSection('profile')" data-target="profile" class="p5-mobile-nav-btn active flex-1">
+                <i data-lucide="user" class="w-4 h-4 mb-0.5"></i>
+                <span>PROFILE</span>
+            </button>
+            <button onclick="switchSection('skill')" data-target="skill" class="p5-mobile-nav-btn flex-1">
+                <i data-lucide="zap" class="w-4 h-4 mb-0.5"></i>
+                <span>SKILL</span>
+            </button>
+            <button onclick="switchSection('quests')" data-target="quests" class="p5-mobile-nav-btn flex-1">
+                <i data-lucide="briefcase" class="w-4 h-4 mb-0.5"></i>
+                <span>QUESTS</span>
+            </button>
+            <button onclick="switchSection('works')" data-target="works" class="p5-mobile-nav-btn flex-1">
+                <i data-lucide="folder-kanban" class="w-4 h-4 mb-0.5"></i>
+                <span>WORKS</span>
+            </button>
+            <button onclick="switchSection('showreel')" data-target="showreel" class="p5-mobile-nav-btn flex-1">
+                <i data-lucide="video" class="w-4 h-4 mb-0.5"></i>
+                <span>REEL</span>
+            </button>
+            <button onclick="switchSection('contact')" data-target="contact" class="p5-mobile-nav-btn flex-1">
+                <i data-lucide="mail" class="w-4 h-4 mb-0.5"></i>
+                <span>CONTACT</span>
+            </button>
+        </nav>
+
+        <!-- ==========================================
+             RIGHT MAIN STAGE: DYNAMIC BANNER + CONTENT
+             ========================================== -->
+        <main class="flex-1 lg:ml-[320px] xl:ml-[360px] relative z-10 pb-16 lg:pb-24">
+
+            <!-- TOP GIANT DIAGONAL BANNER + MORGANA COMMENTARY WIDGET -->
+            <header class="relative pt-4 pb-6 sm:pb-8 px-3 sm:px-6 lg:px-12 overflow-hidden">
+                <div class="max-w-6xl mx-auto flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
+                    
+                    <!-- Giant Skewed Section Banner -->
+                    <div class="p5-giant-banner px-4 sm:px-10 py-3 sm:py-4 w-full lg:w-auto flex-1 relative">
+                        <div class="absolute top-0 right-0 w-32 h-full p5-red-halftone opacity-20 transform skew-x-12 pointer-events-none"></div>
+                        <div class="flex items-baseline gap-3 sm:gap-4 flex-wrap">
+                            <h1 id="giant-banner-title" class="p5-giant-text text-5xl sm:text-7xl md:text-8xl select-none">
+                                PROFILE
+                            </h1>
+                            <span class="text-xl sm:text-3xl text-black font-display">★</span>
+                        </div>
+                        <div class="inline-block bg-black text-white font-display text-[11px] sm:text-sm tracking-widest px-2.5 sm:px-3 py-1 mt-1 transform -skew-x-12">
+                            <span id="giant-banner-sub">ステータス // CONFIDANT PROFILE &amp; EDUCATION</span>
+                        </div>
+                    </div>
+
+                    <!-- Top-Right Comic Speech Bubble -->
+                    <div class="w-full lg:w-[370px] flex items-center gap-3 bg-p5red border-3 sm:border-4 border-white p-3 transform -rotate-1 shadow-[6px_6px_0_#000] sm:shadow-[8px_8px_0_#000] relative">
+                        <div class="flex-1 pr-2">
+                            <div class="flex items-center gap-1.5 mb-1">
+                                <span class="bg-black text-p5cyan font-display text-[10px] sm:text-[11px] px-2 py-0.5 uppercase tracking-wider">NAVI // ODRE-BOT</span>
+                                <span class="text-[11px] sm:text-xs font-extrabold text-white">★ GUIDE</span>
+                            </div>
+                            <p id="navi-speech-text" class="text-xs sm:text-sm font-bold text-white leading-snug">
+                                "Looking cool! Here is Muhammad Audrey's Confidant Profile, DKV Education (GPA 3.49), and career highlights!"
+                            </p>
+                        </div>
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-black border-2 sm:border-3 border-white flex flex-col items-center justify-center flex-shrink-0 shadow-[3px_3px_0_#00e5ff]">
+                            <i data-lucide="sparkles" class="w-5 sm:w-6 h-5 sm:h-6 text-p5cyan"></i>
+                            <span class="font-display text-[9px] sm:text-[10px] text-white tracking-widest">INFO</span>
+                        </div>
+                    </div>
+
+                </div>
+            </header>
+
+            <!-- CONTENT CONTAINER -->
+            <div id="main-stage-container" class="max-w-6xl mx-auto px-3 sm:px-6 lg:px-12 space-y-12 sm:space-y-20">
+
+                <!-- ==========================================
+                     SECTION 1: PROFILE
+                     ========================================== -->
+                <section id="section-profile" class="p5-section p5-section-enter">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-stretch">
+                        
+                        <!-- Left: Character Portrait Card -->
+                        <div class="lg:col-span-5 flex flex-col justify-between p5-stagger-item" style="--stagger-index: 0">
+                            <div class="relative bg-p5red p5-red-halftone border-3 sm:border-4 border-white p-3 sm:p-4 transform -rotate-1 shadow-[8px_8px_0_#000] sm:shadow-[12px_12px_0_#000]">
+                                <div class="absolute -top-3 -left-3 sm:-top-4 sm:-left-4 z-20 bg-black text-white border-2 sm:border-3 border-white px-3 sm:px-4 py-1 transform -skew-x-12 shadow-[3px_3px_0_#00e5ff]">
+                                    <span class="font-display text-xs sm:text-sm tracking-widest text-p5cyan">ARCANA //</span>
+                                    <span class="font-display text-sm sm:text-lg ml-1">THE CREATOR</span>
+                                </div>
+
+                                <div class="relative h-[320px] sm:h-[420px] bg-zinc-950 border-3 sm:border-4 border-black overflow-hidden">
+                                    <img src="https://drive.google.com/thumbnail?id=1OZapS1l2NoFiHeen7qogymkgq14OE8PI&sz=w1000"
+                                         onerror="this.src='https://placehold.co/600x700/111115/e60012?text=MUHAMMAD+AUDREY'"
+                                         alt="Muhammad Audrey Al Fikri"
+                                         class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500">
+                                    <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black via-black/80 to-transparent p-3 sm:p-4">
+                                        <span class="bg-p5red text-white font-display text-[11px] sm:text-xs px-2 py-0.5 uppercase tracking-widest">CODE NAME: ODRE</span>
+                                        <h2 class="font-display text-2xl sm:text-4xl text-white tracking-wide uppercase mt-1">MUHAMMAD AUDREY AL FIKRI</h2>
+                                        <p class="text-p5cyan font-bold text-xs sm:text-sm">Graphic Designer</p>
+                                    </div>
+                                </div>
+
+                                <div class="mt-3 sm:mt-4 grid grid-cols-2 gap-2 text-xs font-bold">
+                                    <div class="bg-black text-white p-2 sm:p-2.5 border-2 border-white flex items-center gap-1.5 sm:gap-2">
+                                        <i data-lucide="map-pin" class="w-3.5 sm:w-4 h-3.5 sm:h-4 text-p5red flex-shrink-0"></i>
+                                        <span class="truncate">Depok, Jabar</span>
+                                    </div>
+                                    <a href="mailto:odreproject@gmail.com" onclick="playP5Sfx('calling_card')" class="bg-black hover:bg-white hover:text-black text-white p-2 sm:p-2.5 border-2 border-white flex items-center gap-1.5 sm:gap-2 transition-colors">
+                                        <i data-lucide="mail" class="w-3.5 sm:w-4 h-3.5 sm:h-4 text-p5cyan flex-shrink-0"></i>
+                                        <span class="truncate">Email Me</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right: Bio & Education -->
+                        <div class="lg:col-span-7 flex flex-col justify-between space-y-6">
+                            
+                            <div class="p5-comic-box p-5 sm:p-8 relative p5-stagger-item" style="--stagger-index: 1">
+                                <div class="inline-block bg-p5red text-white font-display text-sm sm:text-lg px-3 sm:px-4 py-1 border-2 border-white transform -skew-x-12 -mt-8 sm:-mt-10 mb-4 shadow-[3px_3px_0_#000]">
+                                    01 // PROFILE SUMMARY
+                                </div>
+                                <h3 class="font-display text-2xl sm:text-4xl text-white uppercase tracking-wide mb-3 sm:mb-4">
+                                    CRAFTING HIGH-VOLTAGE <span class="text-p5red">ESPORTS</span> &amp; <span class="text-p5cyan">BRAND VISUALS</span>
+                                </h3>
+                                <p class="text-zinc-200 text-sm sm:text-lg leading-relaxed mb-6">
+                                    Graphic Designer with <strong class="text-white underline decoration-p5red decoration-2">2+ years of professional experience</strong> in esports and digital media (plus active freelance projects since 2021). Skilled in crafting visually compelling designs, advanced <strong class="text-p5cyan">digital imaging</strong>, and enhancing brand identity across leading competitive tournaments.
+                                </p>
+
+                                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 pt-3 sm:pt-4 border-t-2 border-zinc-800">
+                                    <div class="bg-zinc-900/90 border-2 border-white p-2.5 sm:p-3 transform -skew-x-6">
+                                        <div class="font-display text-2xl sm:text-3xl text-p5red">100%</div>
+                                        <div class="text-[10px] sm:text-[11px] font-bold text-zinc-300 uppercase">IG Growth</div>
+                                    </div>
+                                    <div class="bg-zinc-900/90 border-2 border-white p-2.5 sm:p-3 transform -skew-x-6">
+                                        <div class="font-display text-2xl sm:text-3xl text-p5cyan">5.5M+</div>
+                                        <div class="text-[10px] sm:text-[11px] font-bold text-zinc-300 uppercase">TikTok &amp; YT</div>
+                                    </div>
+                                    <div class="bg-zinc-900/90 border-2 border-white p-2.5 sm:p-3 transform -skew-x-6">
+                                        <div class="font-display text-2xl sm:text-3xl text-p5yellow">18+</div>
+                                        <div class="text-[10px] sm:text-[11px] font-bold text-zinc-300 uppercase">Campaigns</div>
+                                    </div>
+                                    <div class="bg-zinc-900/90 border-2 border-white p-2.5 sm:p-3 transform -skew-x-6">
+                                        <div class="font-display text-2xl sm:text-3xl text-white">3.49</div>
+                                        <div class="text-[10px] sm:text-[11px] font-bold text-zinc-300 uppercase">DKV GPA</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="p5-comic-box p-5 sm:p-8 bg-gradient-to-r from-zinc-950 via-zinc-900 to-p5red/20 relative p5-stagger-item" style="--stagger-index: 2">
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                                    <div>
+                                        <div class="inline-flex items-center gap-1.5 bg-white text-black font-display text-xs sm:text-sm px-2.5 py-0.5 border-2 border-black transform -skew-x-12 mb-2">
+                                            <i data-lucide="graduation-cap" class="w-3.5 h-3.5"></i>
+                                            <span>ACADEMIC RECORD // 2018 – 2022</span>
+                                        </div>
+                                        <h4 class="font-display text-xl sm:text-3xl text-white tracking-wide">
+                                            UNIVERSITAS INDRAPRASTA PGRI
+                                        </h4>
+                                        <p class="text-p5cyan font-bold text-sm sm:text-base">
+                                            Bachelor of Visual Communication Design (DKV)
+                                        </p>
+                                    </div>
+                                    <div class="bg-p5red border-3 border-white px-4 py-2.5 text-center transform -rotate-3 shadow-[5px_5px_0_#000] flex-shrink-0 self-start sm:self-center">
+                                        <span class="block font-display text-[10px] text-white tracking-widest">FINAL SCORE</span>
+                                        <span class="font-display text-3xl sm:text-4xl text-white">GPA 3.49</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 p5-stagger-item" style="--stagger-index: 3">
+                                <button onclick="switchSection('works')" onmouseenter="playP5Sfx('hover')" class="flex-1 bg-p5red hover:bg-white text-white hover:text-black font-display text-xl sm:text-2xl py-3.5 sm:py-4 px-5 sm:px-6 border-3 sm:border-4 border-white transform -skew-x-12 transition-all shadow-[6px_6px_0_#000] sm:shadow-[8px_8px_0_#000] flex items-center justify-center gap-2.5 cursor-pointer min-h-[52px]">
+                                    <span>INSPECT PORTFOLIO WORKS</span>
+                                    <i data-lucide="arrow-up-right" class="w-5 sm:w-6 h-5 sm:h-6"></i>
+                                </button>
+                                <button onclick="switchSection('quests')" onmouseenter="playP5Sfx('hover')" class="bg-black hover:bg-p5cyan text-white hover:text-black font-display text-xl sm:text-2xl py-3.5 sm:py-4 px-5 sm:px-6 border-3 sm:border-4 border-white transform -skew-x-12 transition-all shadow-[6px_6px_0_#e60012] flex items-center justify-center gap-2 cursor-pointer min-h-[52px]">
+                                    <span>WORK QUESTS</span>
+                                    <i data-lucide="briefcase" class="w-5 h-5"></i>
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ==========================================
+                     SECTION 2: SKILL
+                     ========================================== -->
+                <section id="section-skill" class="p5-section hidden">
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
+                        
+                        <div class="p5-comic-box p-5 sm:p-6 relative p5-stagger-item" style="--stagger-index: 0">
+                            <div class="bg-p5red text-white font-display text-lg sm:text-xl px-3.5 py-1 border-2 border-white transform -skew-x-12 inline-block mb-5 shadow-[3px_3px_0_#000]">
+                                ★ SKILLS SUMMARY
+                            </div>
+                            <div class="space-y-4 sm:space-y-5">
+                                <div class="skill-row" onclick="playP5Sfx('stat_boost')" onmouseenter="playP5Sfx('hover')">
+                                    <div class="flex justify-between font-display text-lg sm:text-xl mb-1">
+                                        <span>DIGITAL IMAGING</span>
+                                        <span class="skill-score-badge text-p5cyan">9 / 10</span>
+                                    </div>
+                                    <div class="h-4 sm:h-5 bg-zinc-900 border-2 border-white p-0.5 transform -skew-x-12">
+                                        <div class="skill-fill h-full bg-p5red" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-row" onclick="playP5Sfx('stat_boost')" onmouseenter="playP5Sfx('hover')">
+                                    <div class="flex justify-between font-display text-lg sm:text-xl mb-1">
+                                        <span>VISUAL STORYTELLING</span>
+                                        <span class="skill-score-badge text-p5cyan">9 / 10</span>
+                                    </div>
+                                    <div class="h-4 sm:h-5 bg-zinc-900 border-2 border-white p-0.5 transform -skew-x-12">
+                                        <div class="skill-fill h-full bg-p5red" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-row" onclick="playP5Sfx('stat_boost')" onmouseenter="playP5Sfx('hover')">
+                                    <div class="flex justify-between font-display text-lg sm:text-xl mb-1">
+                                        <span>SOCIAL MEDIA DESIGN</span>
+                                        <span class="skill-score-badge text-p5cyan">8 / 10</span>
+                                    </div>
+                                    <div class="h-4 sm:h-5 bg-zinc-900 border-2 border-white p-0.5 transform -skew-x-12">
+                                        <div class="skill-fill h-full bg-p5cyan" style="width: 80%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-row" onclick="playP5Sfx('stat_boost')" onmouseenter="playP5Sfx('hover')">
+                                    <div class="flex justify-between font-display text-lg sm:text-xl mb-1">
+                                        <span>IDENTITY DESIGN</span>
+                                        <span class="skill-score-badge text-p5cyan">8 / 10</span>
+                                    </div>
+                                    <div class="h-4 sm:h-5 bg-zinc-900 border-2 border-white p-0.5 transform -skew-x-12">
+                                        <div class="skill-fill h-full bg-p5cyan" style="width: 80%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p5-comic-box p-5 sm:p-6 relative p5-stagger-item" style="--stagger-index: 1">
+                            <div class="bg-white text-black font-display text-lg sm:text-xl px-3.5 py-1 border-2 border-black transform -skew-x-12 inline-block mb-5 shadow-[3px_3px_0_#e60012]">
+                                ★ HARD SKILLS (SOFTWARE)
+                            </div>
+                            <div class="space-y-4 sm:space-y-5">
+                                <div class="skill-row" onclick="playP5Sfx('stat_boost')" onmouseenter="playP5Sfx('hover')">
+                                    <div class="flex justify-between font-display text-lg sm:text-xl mb-1">
+                                        <span>ADOBE PHOTOSHOP (Ps)</span>
+                                        <span class="skill-score-badge text-p5yellow">9 / 10</span>
+                                    </div>
+                                    <div class="h-4 sm:h-5 bg-zinc-900 border-2 border-white p-0.5 transform -skew-x-12">
+                                        <div class="skill-fill h-full bg-gradient-to-r from-p5red to-p5yellow" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-row" onclick="playP5Sfx('stat_boost')" onmouseenter="playP5Sfx('hover')">
+                                    <div class="flex justify-between font-display text-lg sm:text-xl mb-1">
+                                        <span>CANVA</span>
+                                        <span class="skill-score-badge text-p5yellow">9 / 10</span>
+                                    </div>
+                                    <div class="h-4 sm:h-5 bg-zinc-900 border-2 border-white p-0.5 transform -skew-x-12">
+                                        <div class="skill-fill h-full bg-gradient-to-r from-p5red to-p5yellow" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-row" onclick="playP5Sfx('stat_boost')" onmouseenter="playP5Sfx('hover')">
+                                    <div class="flex justify-between font-display text-lg sm:text-xl mb-1">
+                                        <span>ADOBE ILLUSTRATOR (Ai)</span>
+                                        <span class="skill-score-badge text-p5yellow">8 / 10</span>
+                                    </div>
+                                    <div class="h-4 sm:h-5 bg-zinc-900 border-2 border-white p-0.5 transform -skew-x-12">
+                                        <div class="skill-fill h-full bg-white" style="width: 80%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-row" onclick="playP5Sfx('stat_boost')" onmouseenter="playP5Sfx('hover')">
+                                    <div class="flex justify-between font-display text-lg sm:text-xl mb-1">
+                                        <span>CAPCUT (VIDEO &amp; REELS)</span>
+                                        <span class="skill-score-badge text-p5yellow">8 / 10</span>
+                                    </div>
+                                    <div class="h-4 sm:h-5 bg-zinc-900 border-2 border-white p-0.5 transform -skew-x-12">
+                                        <div class="skill-fill h-full bg-white" style="width: 80%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-5 pt-4 border-t-2 border-zinc-800">
+                                <span class="text-xs font-extrabold uppercase tracking-widest text-zinc-400 block mb-2">EQUIPPED TOOLS:</span>
+                                <div class="flex flex-wrap gap-1.5 sm:gap-2">
+                                    <span class="bg-p5red text-white font-display text-xs sm:text-sm px-2.5 py-1 border border-white transform -skew-x-12">Ae (After Effects)</span>
+                                    <span class="bg-zinc-800 text-p5cyan font-display text-xs sm:text-sm px-2.5 py-1 border border-p5cyan transform -skew-x-12">Id (InDesign)</span>
+                                    <span class="bg-zinc-800 text-white font-display text-xs sm:text-sm px-2.5 py-1 border border-white transform -skew-x-12">Stream Overlays</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p5-comic-box p-5 sm:p-6 relative p5-stagger-item" style="--stagger-index: 2">
+                            <div class="bg-p5cyan text-black font-display text-lg sm:text-xl px-3.5 py-1 border-2 border-black transform -skew-x-12 inline-block mb-5 shadow-[3px_3px_0_#e60012]">
+                                ★ SOFT SKILLS (SOCIAL STATS)
+                            </div>
+                            <div class="space-y-4 sm:space-y-5">
+                                <div class="skill-row" onclick="playP5Sfx('stat_boost')" onmouseenter="playP5Sfx('hover')">
+                                    <div class="flex justify-between font-display text-lg sm:text-xl mb-1">
+                                        <span>CREATIVITY</span>
+                                        <span class="skill-score-badge text-p5red">9 / 10</span>
+                                    </div>
+                                    <div class="h-4 sm:h-5 bg-zinc-900 border-2 border-white p-0.5 transform -skew-x-12">
+                                        <div class="skill-fill h-full bg-p5cyan" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-row" onclick="playP5Sfx('stat_boost')" onmouseenter="playP5Sfx('hover')">
+                                    <div class="flex justify-between font-display text-lg sm:text-xl mb-1">
+                                        <span>ADAPTABILITY</span>
+                                        <span class="skill-score-badge text-p5red">9 / 10</span>
+                                    </div>
+                                    <div class="h-4 sm:h-5 bg-zinc-900 border-2 border-white p-0.5 transform -skew-x-12">
+                                        <div class="skill-fill h-full bg-p5cyan" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-row" onclick="playP5Sfx('stat_boost')" onmouseenter="playP5Sfx('hover')">
+                                    <div class="flex justify-between font-display text-lg sm:text-xl mb-1">
+                                        <span>COMMUNICATION</span>
+                                        <span class="skill-score-badge text-p5red">8 / 10</span>
+                                    </div>
+                                    <div class="h-4 sm:h-5 bg-zinc-900 border-2 border-white p-0.5 transform -skew-x-12">
+                                        <div class="skill-fill h-full bg-p5red" style="width: 80%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-row" onclick="playP5Sfx('stat_boost')" onmouseenter="playP5Sfx('hover')">
+                                    <div class="flex justify-between font-display text-lg sm:text-xl mb-1">
+                                        <span>PROBLEM-SOLVING</span>
+                                        <span class="skill-score-badge text-p5red">8 / 10</span>
+                                    </div>
+                                    <div class="h-4 sm:h-5 bg-zinc-900 border-2 border-white p-0.5 transform -skew-x-12">
+                                        <div class="skill-fill h-full bg-p5red" style="width: 80%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-5 bg-black border-2 border-white p-2.5 sm:p-3 transform -rotate-1">
+                                <p class="text-xs text-zinc-300 font-semibold leading-relaxed">
+                                    <strong class="text-p5yellow">PASSIVE ABILITY:</strong> High adaptability in fast-paced live esports tournaments, agency pipelines, and multi-client freelance deadlines.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- ==========================================
+                     SECTION 3: QUESTS
+                     ========================================== -->
+                <section id="section-quests" class="p5-section hidden">
+                    <div class="space-y-6 sm:space-y-8">
+                        
+                        <div class="p5-comic-box p-5 sm:p-8 relative overflow-hidden p5-stagger-item" style="--stagger-index: 0" onclick="playP5Sfx('preview')">
+                            <div class="flex flex-wrap items-center justify-between gap-3 pb-4 mb-4 sm:mb-5 border-b-2 border-zinc-800">
+                                <div>
+                                    <div class="inline-flex items-center gap-1.5 bg-p5red text-white font-display text-[11px] sm:text-xs tracking-widest px-2.5 sm:px-3 py-1 border border-white transform -skew-x-12 mb-2">
+                                        <span>ACTIVE MAIN QUEST // 2021 – NOW</span>
+                                    </div>
+                                    <h3 class="font-display text-2xl sm:text-4xl text-white tracking-wide">
+                                        FREELANCE GRAPHIC DESIGNER
+                                    </h3>
+                                    <p class="text-p5cyan font-bold text-xs sm:text-sm uppercase tracking-wider">INDEPENDENT • MULTI-BRAND &amp; ESPORTS CLIENTS</p>
+                                </div>
+                                <span class="bg-white text-black font-display text-base sm:text-xl px-3 sm:px-4 py-1 border-2 border-black transform -rotate-3 shadow-[3px_3px_0_#e60012]">
+                                    ONGOING
+                                </span>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+                                <div class="bg-zinc-950/90 border-2 border-zinc-800 p-4 sm:p-5">
+                                    <h4 class="font-display text-lg sm:text-xl text-p5cyan mb-3 flex items-center gap-2">
+                                        <i data-lucide="crosshair" class="w-4 sm:w-5 h-4 sm:h-5"></i> RESPONSIBILITIES
+                                    </h4>
+                                    <ul class="space-y-2 text-xs sm:text-sm text-zinc-300 list-disc list-inside leading-relaxed">
+                                        <li>Design jersey graphics, social media visuals, branding for packaging, logos, flyers, and websites.</li>
+                                        <li>Collaborate with clients and teams to brainstorm and develop creative ideas and compelling campaigns.</li>
+                                        <li>Translate client briefs into consistent visual identities across print and digital media.</li>
+                                        <li>Manage multiple projects simultaneously, delivering revisions and final files on schedule.</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-zinc-950/90 border-2 border-p5red/60 p-4 sm:p-5">
+                                    <h4 class="font-display text-lg sm:text-xl text-p5yellow mb-3 flex items-center gap-2">
+                                        <i data-lucide="trophy" class="w-4 sm:w-5 h-4 sm:h-5"></i> KEY ACHIEVEMENTS
+                                    </h4>
+                                    <ul class="space-y-2 text-xs sm:text-sm text-zinc-200 list-disc list-inside leading-relaxed">
+                                        <li>Executed innovative packaging designs that improved product visibility and sales.</li>
+                                        <li>Delivered jersey and esports-related designs for gaming organizations, strengthening visual identity.</li>
+                                        <li>Provided freelance services to notable clients: <strong class="text-white">STAPO INDONESIA, PERSIJA ESPORTS, PERSIPURA, REALME, IBL, SENTRAGAMERS, MINESKI, FREE FIRE, PUBG, KOK BISA, HUMANITY JOURNEY</strong>, etc.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p5-comic-box p-5 sm:p-8 relative overflow-hidden p5-stagger-item" style="--stagger-index: 1" onclick="playP5Sfx('preview')">
+                            <div class="flex flex-wrap items-center justify-between gap-3 pb-4 mb-4 sm:mb-5 border-b-2 border-zinc-800">
+                                <div>
+                                    <div class="inline-flex items-center gap-1.5 bg-p5cyan text-black font-display text-[11px] sm:text-xs tracking-widest px-2.5 sm:px-3 py-1 border border-black transform -skew-x-12 mb-2">
+                                        <span>COMPLETED QUEST // 2025</span>
+                                    </div>
+                                    <h3 class="font-display text-2xl sm:text-4xl text-white tracking-wide">
+                                        GRAPHIC DESIGNER — <span class="text-p5red">ARCADE ACES</span>
+                                    </h3>
+                                </div>
+                                <span class="bg-zinc-900 text-p5cyan font-display text-base sm:text-lg px-3 sm:px-4 py-1 border-2 border-p5cyan transform rotate-2">
+                                    1M+ VIEWS
+                                </span>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+                                <div class="bg-zinc-950/90 border-2 border-zinc-800 p-4 sm:p-5">
+                                    <h4 class="font-display text-lg sm:text-xl text-p5cyan mb-3 flex items-center gap-2">
+                                        <i data-lucide="crosshair" class="w-4 sm:w-5 h-4 sm:h-5"></i> RESPONSIBILITIES
+                                    </h4>
+                                    <ul class="space-y-2 text-xs sm:text-sm text-zinc-300 list-disc list-inside leading-relaxed">
+                                        <li>Developed digital imaging posters and visual components for tournaments and digital assets.</li>
+                                        <li>Worked alongside various departments to brainstorm creative campaign ideas.</li>
+                                        <li>Supported live stream tournament executions, both in-person and online.</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-zinc-950/90 border-2 border-p5red/60 p-4 sm:p-5">
+                                    <h4 class="font-display text-lg sm:text-xl text-p5yellow mb-3 flex items-center gap-2">
+                                        <i data-lucide="trophy" class="w-4 sm:w-5 h-4 sm:h-5"></i> KEY ACHIEVEMENTS
+                                    </h4>
+                                    <ul class="space-y-2 text-xs sm:text-sm text-zinc-200 list-disc list-inside leading-relaxed">
+                                        <li>Created compelling visual content that drove <strong class="text-white">1 million total views</strong> across platforms.</li>
+                                        <li>Collaborated with influencers to design unique graphics boosting brand visibility.</li>
+                                        <li>Gained <strong class="text-p5cyan">5,000 new followers</strong> across channels within the fighting game community.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p5-comic-box p-5 sm:p-8 relative overflow-hidden p5-stagger-item" style="--stagger-index: 2" onclick="playP5Sfx('preview')">
+                            <div class="flex flex-wrap items-center justify-between gap-3 pb-4 mb-4 sm:mb-5 border-b-2 border-zinc-800">
+                                <div>
+                                    <div class="inline-flex items-center gap-1.5 bg-p5cyan text-black font-display text-[11px] sm:text-xs tracking-widest px-2.5 sm:px-3 py-1 border border-black transform -skew-x-12 mb-2">
+                                        <span>COMPLETED QUEST // 2024 – 2025</span>
+                                    </div>
+                                    <h3 class="font-display text-2xl sm:text-4xl text-white tracking-wide">
+                                        JR GRAPHIC DESIGNER — <span class="text-p5red">PERSIJA ESPORTS</span>
+                                    </h3>
+                                </div>
+                                <span class="bg-p5red text-white font-display text-base sm:text-lg px-3 sm:px-4 py-1 border-2 border-white transform -rotate-2">
+                                    +100% IG GROWTH
+                                </span>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+                                <div class="bg-zinc-950/90 border-2 border-zinc-800 p-4 sm:p-5">
+                                    <h4 class="font-display text-lg sm:text-xl text-p5cyan mb-3 flex items-center gap-2">
+                                        <i data-lucide="crosshair" class="w-4 sm:w-5 h-4 sm:h-5"></i> RESPONSIBILITIES
+                                    </h4>
+                                    <ul class="space-y-2 text-xs sm:text-sm text-zinc-300 list-disc list-inside leading-relaxed">
+                                        <li>Created digital imaging posters and visual elements including game tournament overlays.</li>
+                                        <li>Collaborated with different departments to generate innovative campaign ideas.</li>
+                                        <li>Assisted in running live stream tournaments online and offline.</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-zinc-950/90 border-2 border-p5red/60 p-4 sm:p-5">
+                                    <h4 class="font-display text-lg sm:text-xl text-p5yellow mb-3 flex items-center gap-2">
+                                        <i data-lucide="trophy" class="w-4 sm:w-5 h-4 sm:h-5"></i> KEY ACHIEVEMENTS
+                                    </h4>
+                                    <ul class="space-y-2 text-xs sm:text-sm text-zinc-200 list-disc list-inside leading-relaxed">
+                                        <li>Contributed to a <strong class="text-white">100% growth in IG followers (70K to 143K)</strong>.</li>
+                                        <li>Achieved over <strong class="text-p5cyan">4.5M views on TikTok</strong> and <strong class="text-p5cyan">1M views on YouTube</strong> within a year.</li>
+                                        <li>Crafted promotional materials for major events like <strong class="text-white">POCO Xtreme League Grand Final</strong> and <strong class="text-white">Tecno Gamefest 2024</strong>.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p5-comic-box p-5 sm:p-8 relative overflow-hidden p5-stagger-item" style="--stagger-index: 3" onclick="playP5Sfx('preview')">
+                            <div class="flex flex-wrap items-center justify-between gap-3 pb-4 mb-4 sm:mb-5 border-b-2 border-zinc-800">
+                                <div>
+                                    <div class="inline-flex items-center gap-1.5 bg-white text-black font-display text-[11px] sm:text-xs tracking-widest px-2.5 sm:px-3 py-1 border border-black transform -skew-x-12 mb-2">
+                                        <span>COMPLETED QUEST // 2023 – 2024</span>
+                                    </div>
+                                    <h3 class="font-display text-2xl sm:text-4xl text-white tracking-wide">
+                                        GRAPHIC DESIGNER — <span class="text-p5red">AURA ESPORTS &amp; STUN.GG</span>
+                                    </h3>
+                                </div>
+                                <span class="bg-zinc-900 text-p5yellow font-display text-base sm:text-lg px-3 sm:px-4 py-1 border-2 border-p5yellow transform rotate-1">
+                                    100K+ LIKES
+                                </span>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+                                <div class="bg-zinc-950/90 border-2 border-zinc-800 p-4 sm:p-5">
+                                    <h4 class="font-display text-lg sm:text-xl text-p5cyan mb-3 flex items-center gap-2">
+                                        <i data-lucide="crosshair" class="w-4 sm:w-5 h-4 sm:h-5"></i> RESPONSIBILITIES
+                                    </h4>
+                                    <ul class="space-y-2 text-xs sm:text-sm text-zinc-300 list-disc list-inside leading-relaxed">
+                                        <li>Created digital imaging posters and visual assets for brochures and digital platforms.</li>
+                                        <li>Collaborated with other divisions on creative concepts and campaigns.</li>
+                                        <li>Maintained design templates, style guides, and brand identity.</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-zinc-950/90 border-2 border-p5red/60 p-4 sm:p-5">
+                                    <h4 class="font-display text-lg sm:text-xl text-p5yellow mb-3 flex items-center gap-2">
+                                        <i data-lucide="trophy" class="w-4 sm:w-5 h-4 sm:h-5"></i> KEY ACHIEVEMENTS
+                                    </h4>
+                                    <ul class="space-y-2 text-xs sm:text-sm text-zinc-200 list-disc list-inside leading-relaxed">
+                                        <li>Created eye-catching YouTube thumbnails resulting in over <strong class="text-white">10,000 views</strong> for BA announcements.</li>
+                                        <li>Designed engaging feed posters garnering over <strong class="text-p5cyan">100,000 likes</strong>.</li>
+                                        <li>Featured influencers like <strong class="text-white">elsajapasal, laurazhipora, suci</strong>, etc.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p5-comic-box p-5 sm:p-8 relative overflow-hidden p5-stagger-item" style="--stagger-index: 4" onclick="playP5Sfx('preview')">
+                            <div class="flex flex-wrap items-center justify-between gap-3 pb-4 mb-4 sm:mb-5 border-b-2 border-zinc-800">
+                                <div>
+                                    <div class="inline-flex items-center gap-1.5 bg-zinc-800 text-white font-display text-[11px] sm:text-xs tracking-widest px-2.5 sm:px-3 py-1 border border-white transform -skew-x-12 mb-2">
+                                        <span>ORIGIN QUEST // SEPT – NOV 2021</span>
+                                    </div>
+                                    <h3 class="font-display text-2xl sm:text-4xl text-white tracking-wide">
+                                        GRAPHIC DESIGNER INTERN — <span class="text-p5cyan">GOLDTEK UTAMA MANDIRI</span>
+                                    </h3>
+                                </div>
+                                <span class="bg-zinc-900 text-white font-display text-base sm:text-lg px-3 sm:px-4 py-1 border-2 border-white">
+                                    BRANDING
+                                </span>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+                                <div class="bg-zinc-950/90 border-2 border-zinc-800 p-4 sm:p-5">
+                                    <h4 class="font-display text-lg sm:text-xl text-p5cyan mb-3 flex items-center gap-2">
+                                        <i data-lucide="crosshair" class="w-4 sm:w-5 h-4 sm:h-5"></i> RESPONSIBILITIES
+                                    </h4>
+                                    <ul class="space-y-2 text-xs sm:text-sm text-zinc-300 list-disc list-inside leading-relaxed">
+                                        <li>Collaborated with marketing to design promotional media aligned with brand guidelines.</li>
+                                        <li>Worked with the wider development team and handled logo design.</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-zinc-950/90 border-2 border-p5red/60 p-4 sm:p-5">
+                                    <h4 class="font-display text-lg sm:text-xl text-p5yellow mb-3 flex items-center gap-2">
+                                        <i data-lucide="trophy" class="w-4 sm:w-5 h-4 sm:h-5"></i> KEY ACHIEVEMENTS
+                                    </h4>
+                                    <ul class="space-y-2 text-xs sm:text-sm text-zinc-200 list-disc list-inside leading-relaxed">
+                                        <li>Produced promotional media enhancing brand recognition.</li>
+                                        <li>Designed effective branding and logos reinforcing market presence.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- ==========================================
+                     SECTION 4: WORKS
+                     ========================================== -->
+                <section id="section-works" class="p5-section hidden">
+                    
+                    <div class="p5-comic-box p-4 sm:p-6 bg-zinc-950 mb-6 sm:mb-8 p5-stagger-item" style="--stagger-index: 0">
+                        <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                            <div class="flex items-center gap-2 sm:gap-3">
+                                <span class="bg-p5red text-white font-display text-xs sm:text-sm px-2.5 sm:px-3 py-0.5 border border-white transform -skew-x-12">
+                                    ★ SELECTED CLIENTS
+                                </span>
+                                <h3 class="font-display text-xl sm:text-3xl text-white uppercase tracking-wide">
+                                    BRANDS &amp; ESPORTS ORGANIZATIONS
+                                </h3>
+                            </div>
+                            <span class="text-[11px] sm:text-xs font-bold text-p5cyan uppercase tracking-wider">18 CURATED PROJECTS</span>
+                        </div>
+                        <div class="border-3 border-white bg-black overflow-hidden shadow-[5px_5px_0_#e60012]">
+                            <video autoplay loop muted playsinline class="w-full max-h-[180px] sm:max-h-[220px] object-cover">
+                                <source src="https://cdn.imageurlgenerator.com/uploads/16bce496-0233-4ffb-be20-9ce67cd1c0fb.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <!-- Active Project Dossier Inspector -->
+                    <div id="portfolio-inspector" class="p5-comic-box bg-zinc-950 border-3 sm:border-4 border-white mb-8 sm:mb-10 overflow-hidden shadow-[8px_8px_0_#e60012] sm:shadow-[12px_12px_0_#e60012] p5-stagger-item" style="--stagger-index: 1">
+                        <div class="bg-p5red border-b-3 sm:border-b-4 border-white px-4 sm:px-6 py-2.5 flex flex-wrap items-center justify-between gap-2">
+                            <div class="flex items-center gap-2 sm:gap-3">
+                                <span class="bg-black text-p5cyan font-display text-xs sm:text-sm px-2.5 sm:px-3 py-0.5 border border-white transform -skew-x-12">
+                                    ACTIVE DOSSIER
+                                </span>
+                                <span id="inspector-index" class="font-display text-lg sm:text-xl text-white tracking-wider">FILE #01 / 18</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <button onclick="prevProject()" onmouseenter="playP5Sfx('hover')" class="bg-black hover:bg-p5cyan text-white hover:text-black font-display text-xs sm:text-sm px-3 py-1 border-2 border-white transition-colors cursor-pointer min-h-[38px]">
+                                    ◀ PREV
+                                </button>
+                                <button onclick="nextProject()" onmouseenter="playP5Sfx('hover')" class="bg-black hover:bg-p5cyan text-white hover:text-black font-display text-xs sm:text-sm px-3 py-1 border-2 border-white transition-colors cursor-pointer min-h-[38px]">
+                                    NEXT ▶
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 lg:grid-cols-12">
+                            <div class="lg:col-span-7 bg-black relative min-h-[260px] sm:min-h-[400px] flex items-center justify-center p-3 sm:p-4 border-b-3 sm:border-b-4 lg:border-b-0 lg:border-r-4 border-white group cursor-pointer" onclick="openFullscreenModal(currentInspectorIndex)">
+                                <img id="inspector-img" src="" alt="Selected Work" class="max-h-[320px] sm:max-h-[400px] w-auto object-contain transition-transform duration-500 group-hover:scale-105">
+                                <button onclick="event.stopPropagation(); openFullscreenModal(currentInspectorIndex)" onmouseenter="playP5Sfx('hover')" class="absolute bottom-3 right-3 bg-p5red hover:bg-p5cyan text-white hover:text-black font-display text-xs sm:text-base px-3.5 py-2 border-2 border-white transform -skew-x-12 shadow-[3px_3px_0_#000] flex items-center gap-2 cursor-pointer min-h-[44px]">
+                                    <i data-lucide="maximize-2" class="w-4 h-4"></i>
+                                    <span>ZOOM PREVIEW</span>
+                                </button>
+                            </div>
+
+                            <div class="lg:col-span-5 p-4 sm:p-8 flex flex-col justify-between bg-gradient-to-br from-zinc-950 via-zinc-900 to-black">
+                                <div>
+                                    <div class="flex flex-wrap items-center gap-2 mb-2 sm:mb-3">
+                                        <span id="inspector-cat" class="bg-p5cyan text-black font-display text-xs sm:text-sm px-2.5 py-0.5 border border-black transform -skew-x-12"></span>
+                                        <span id="inspector-role" class="bg-zinc-800 text-white font-sans font-bold text-[11px] sm:text-xs px-2.5 py-1 border border-zinc-600"></span>
+                                    </div>
+
+                                    <h3 id="inspector-title" class="font-display text-3xl sm:text-5xl text-white uppercase tracking-wide leading-none mb-3 sm:mb-4"></h3>
+
+                                    <div class="bg-black/90 border-l-4 border-p5red p-3 sm:p-4 mb-3 sm:mb-4">
+                                        <span class="block font-display text-xs sm:text-sm text-p5yellow tracking-widest uppercase mb-1">
+                                            ★ DESKRIPSI PEKERJAAN:
+                                        </span>
+                                        <p id="inspector-desc-id" class="text-zinc-200 text-xs sm:text-sm leading-relaxed mb-2 font-medium"></p>
+                                        <p id="inspector-desc-en" class="text-zinc-400 text-[11px] sm:text-xs italic leading-relaxed border-t border-zinc-800 pt-2"></p>
+                                    </div>
+
+                                    <div>
+                                        <span class="block font-display text-[11px] sm:text-xs text-zinc-400 tracking-widest uppercase mb-2">
+                                            DELIVERABLES:
+                                        </span>
+                                        <div id="inspector-deliverables" class="flex flex-wrap gap-1.5"></div>
+                                    </div>
+                                </div>
+
+                                <div class="mt-4 pt-3 border-t border-zinc-800 flex items-center justify-between text-[11px] sm:text-xs text-zinc-400 font-bold">
+                                    <span>CLICK ANY CARD TO PREVIEW</span>
+                                    <button onclick="openFullscreenModal(currentInspectorIndex)" onmouseenter="playP5Sfx('hover')" class="text-p5cyan hover:underline flex items-center gap-1 cursor-pointer">
+                                        <span>FULLSCREEN ZOOM</span>
+                                        <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Filter Controls & Layout Switcher -->
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 sm:gap-4 mb-6 sm:mb-8 bg-black/90 border-3 border-white p-3 sm:p-4 shadow-[5px_5px_0_#000] p5-stagger-item" style="--stagger-index: 2">
+                        <div class="flex flex-wrap gap-1.5 sm:gap-2" id="portfolio-filters">
+                            <button onclick="filterPortfolio('all')" onmouseenter="playP5Sfx('hover')" data-filter="all" class="p5-filter-btn bg-p5red text-white font-display text-sm sm:text-lg px-3.5 sm:px-5 py-1.5 border-2 border-white transform -skew-x-12 shadow-[3px_3px_0_#00e5ff] cursor-pointer min-h-[42px]">
+                                ALL (18)
+                            </button>
+                            <button onclick="filterPortfolio('esports')" onmouseenter="playP5Sfx('hover')" data-filter="esports" class="p5-filter-btn bg-zinc-900 hover:bg-zinc-800 text-zinc-300 font-display text-sm sm:text-lg px-3.5 sm:px-5 py-1.5 border-2 border-zinc-600 transform -skew-x-12 cursor-pointer min-h-[42px]">
+                                ESPORTS
+                            </button>
+                            <button onclick="filterPortfolio('event')" onmouseenter="playP5Sfx('hover')" data-filter="event" class="p5-filter-btn bg-zinc-900 hover:bg-zinc-800 text-zinc-300 font-display text-sm sm:text-lg px-3.5 sm:px-5 py-1.5 border-2 border-zinc-600 transform -skew-x-12 cursor-pointer min-h-[42px]">
+                                EVENTS
+                            </button>
+                            <button onclick="filterPortfolio('branding')" onmouseenter="playP5Sfx('hover')" data-filter="branding" class="p5-filter-btn bg-zinc-900 hover:bg-zinc-800 text-zinc-300 font-display text-sm sm:text-lg px-3.5 sm:px-5 py-1.5 border-2 border-zinc-600 transform -skew-x-12 cursor-pointer min-h-[42px]">
+                                BRANDING
+                            </button>
+                            <button onclick="filterPortfolio('social')" onmouseenter="playP5Sfx('hover')" data-filter="social" class="p5-filter-btn bg-zinc-900 hover:bg-zinc-800 text-zinc-300 font-display text-sm sm:text-lg px-3.5 sm:px-5 py-1.5 border-2 border-zinc-600 transform -skew-x-12 cursor-pointer min-h-[42px]">
+                                SOCIAL
+                            </button>
+                        </div>
+
+                        <div class="flex items-center gap-2 self-start md:self-auto">
+                            <span class="font-display text-[11px] sm:text-xs text-zinc-400 uppercase tracking-wider mr-1">LAYOUT:</span>
+                            <button onclick="setPortfolioLayout('grid')" onmouseenter="playP5Sfx('hover')" id="layout-grid-btn" class="bg-p5cyan text-black font-display text-xs sm:text-sm px-2.5 sm:px-3 py-1.5 border-2 border-black transform -skew-x-12 flex items-center gap-1 cursor-pointer min-h-[40px]">
+                                <i data-lucide="layout-grid" class="w-3.5 h-3.5"></i>
+                                <span>GRID</span>
+                            </button>
+                            <button onclick="setPortfolioLayout('side')" onmouseenter="playP5Sfx('hover')" id="layout-side-btn" class="bg-zinc-900 text-white font-display text-xs sm:text-sm px-2.5 sm:px-3 py-1.5 border-2 border-white transform -skew-x-12 flex items-center gap-1 cursor-pointer min-h-[40px]">
+                                <i data-lucide="columns" class="w-3.5 h-3.5"></i>
+                                <span>SPLIT</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="portfolio-grid-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-7">
+                        <!-- Rendered by JS -->
+                    </div>
+
+                    <!-- PERSONAL PROJECTS (SUB-MENU OF WORKS) -->
+                    <div class="p5-comic-box p-4 sm:p-6 lg:p-8 bg-zinc-950 mt-12 sm:mt-16 p5-stagger-item" style="--stagger-index: 3">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 border-b-2 border-zinc-800 pb-4">
+                            <div>
+                                <span class="bg-p5red text-white font-display text-xs sm:text-sm px-3 py-1 border border-white transform -skew-x-12 inline-block mb-2">
+                                    ★ DIGITAL IMAGING ARCHIVE
+                                </span>
+                                <h3 class="font-display text-2xl sm:text-4xl text-white uppercase tracking-wide">
+                                    PERSONAL PROJECTS
+                                </h3>
+                            </div>
+                            <span class="text-xs text-zinc-400 font-bold uppercase bg-black px-3 py-1 border border-zinc-700">SELECT A POSTER</span>
+                        </div>
+                        
+                        <div id="personal-grid-container" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 sm:gap-4">
+                            <!-- Rendered by JS -->
+                        </div>
+                    </div>
+
+                </section>
+
+                <!-- ==========================================
+                     SECTION 5: SHOWREEL
+                     ========================================== -->
+                <section id="section-showreel" class="p5-section hidden">
+                    <div class="space-y-8 sm:space-y-12">
+                        
+                        <div class="p5-comic-box p-5 sm:p-8 bg-zinc-950 p5-stagger-item" style="--stagger-index: 0" onclick="playP5Sfx('preview')">
+                            <div class="flex flex-wrap items-center justify-between gap-3 mb-4 sm:mb-6">
+                                <div>
+                                    <span class="bg-p5red text-white font-display text-xs sm:text-sm px-3 py-1 border border-white transform -skew-x-12 inline-block mb-2">
+                                        ★ TRUSTED BY TOP BRANDS
+                                    </span>
+                                    <h3 class="font-display text-2xl sm:text-4xl text-white uppercase tracking-wide">
+                                        SELECTED CLIENTS &amp; COLLABORATIONS
+                                    </h3>
+                                </div>
+                                <p class="text-xs sm:text-sm text-zinc-300 max-w-md font-medium">
+                                    Deretan klien esports, agensi, turnamen nasional, dan brand yang pernah bekerja sama dengan Muhammad Audrey.
+                                </p>
+                            </div>
+                            <div class="border-3 sm:border-4 border-white bg-black overflow-hidden shadow-[6px_6px_0_#e60012]">
+                                <video autoplay loop muted playsinline class="w-full h-auto object-cover">
+                                    <source src="https://cdn.imageurlgenerator.com/uploads/16bce496-0233-4ffb-be20-9ce67cd1c0fb.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="mb-5 sm:mb-6 p5-stagger-item" style="--stagger-index: 1">
+                                <span class="bg-p5cyan text-black font-display text-xs sm:text-sm px-3 py-1 border border-black transform -skew-x-12 inline-block mb-2">
+                                    MOTION GRAPHICS
+                                </span>
+                                <h3 class="font-display text-3xl sm:text-5xl text-white uppercase tracking-wide">
+                                    MOTION SHOWREEL ARCHIVE
+                                </h3>
+                                <p class="text-zinc-300 text-sm sm:text-base mt-1">
+                                    Koleksi karya motion graphics, animasi promosi esports, dan video editing dengan transisi dinamis.
+                                </p>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 p5-stagger-item" style="--stagger-index: 2">
+                                <div class="p5-comic-box overflow-hidden flex flex-col justify-between cursor-pointer" onclick="playP5Sfx('preview')" onmouseenter="playP5Sfx('hover')">
+                                    <div class="relative bg-black border-b-3 border-white">
+                                        <video autoplay loop muted playsinline class="w-full h-[280px] sm:h-[340px] object-cover">
+                                            <source src="https://cdn.imageurlgenerator.com/uploads/2acc6c48-c4e2-45e2-8170-a50e929b7129.mp4" type="video/mp4">
+                                        </video>
+                                        <span class="absolute top-3 left-3 bg-p5red text-white font-display text-xs px-2.5 py-0.5 border border-white transform -skew-x-12">
+                                            REEL #01
+                                        </span>
+                                    </div>
+                                    <div class="p-3.5 sm:p-4 bg-zinc-950">
+                                        <h4 class="font-display text-xl sm:text-2xl text-white">DYNAMIC MOTION REEL 01</h4>
+                                        <p class="text-xs text-zinc-300 mt-1">
+                                            <strong class="text-p5cyan">Pekerjaan:</strong> Motion graphic promosi, efek visual, dan sinkronisasi pacing video sosmed.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="p5-comic-box overflow-hidden flex flex-col justify-between cursor-pointer" onclick="playP5Sfx('preview')" onmouseenter="playP5Sfx('hover')">
+                                    <div class="relative bg-black border-b-3 border-white">
+                                        <video autoplay loop muted playsinline class="w-full h-[280px] sm:h-[340px] object-cover">
+                                            <source src="https://cdn.imageurlgenerator.com/uploads/c7ba85c5-b755-412e-8ce3-15f60679c30d.mp4" type="video/mp4">
+                                        </video>
+                                        <span class="absolute top-3 left-3 bg-p5red text-white font-display text-xs px-2.5 py-0.5 border border-white transform -skew-x-12">
+                                            REEL #02
+                                        </span>
+                                    </div>
+                                    <div class="p-3.5 sm:p-4 bg-zinc-950">
+                                        <h4 class="font-display text-xl sm:text-2xl text-white">ESPORTS &amp; CAMPAIGN REEL 02</h4>
+                                        <p class="text-xs text-zinc-300 mt-1">
+                                            <strong class="text-p5cyan">Pekerjaan:</strong> Animasi key visual, kinetic typography, dan highlight kampanye digital.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="p5-comic-box overflow-hidden flex flex-col justify-between cursor-pointer" onclick="playP5Sfx('preview')" onmouseenter="playP5Sfx('hover')">
+                                    <div class="relative bg-black border-b-3 border-white">
+                                        <video autoplay loop muted playsinline class="w-full h-[280px] sm:h-[340px] object-cover">
+                                            <source src="https://cdn.imageurlgenerator.com/uploads/75b4ead3-190c-4913-8ac2-83b6a0761519.mp4" type="video/mp4">
+                                        </video>
+                                        <span class="absolute top-3 left-3 bg-p5red text-white font-display text-xs px-2.5 py-0.5 border border-white transform -skew-x-12">
+                                            REEL #03
+                                        </span>
+                                    </div>
+                                    <div class="p-3.5 sm:p-4 bg-zinc-950">
+                                        <h4 class="font-display text-xl sm:text-2xl text-white">VISUAL STORYTELLING REEL 03</h4>
+                                        <p class="text-xs text-zinc-300 mt-1">
+                                            <strong class="text-p5cyan">Pekerjaan:</strong> Video editing dan compositing aset grafis untuk bumper turnamen.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="p5-comic-box overflow-hidden flex flex-col justify-between lg:col-span-1 md:col-span-2 cursor-pointer" onclick="playP5Sfx('preview')" onmouseenter="playP5Sfx('hover')">
+                                    <div class="relative bg-black border-b-3 border-white">
+                                        <video autoplay loop muted playsinline class="w-full h-[280px] sm:h-[340px] object-cover">
+                                            <source src="https://cdn.imageurlgenerator.com/uploads/9aad1421-af7b-45a3-90aa-f3ebf9c328c9.mp4" type="video/mp4">
+                                        </video>
+                                        <span class="absolute top-3 left-3 bg-p5red text-white font-display text-xs px-2.5 py-0.5 border border-white transform -skew-x-12">
+                                            REEL #04
+                                        </span>
+                                    </div>
+                                    <div class="p-3.5 sm:p-4 bg-zinc-950">
+                                        <h4 class="font-display text-xl sm:text-2xl text-white">SOCIAL MEDIA MOTION REEL 04</h4>
+                                        <p class="text-xs text-zinc-300 mt-1">
+                                            <strong class="text-p5cyan">Pekerjaan:</strong> Konten video pendek berenergi tinggi untuk Reels dan TikTok.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="p5-comic-box overflow-hidden flex flex-col justify-between lg:col-span-2 md:col-span-2 cursor-pointer" onclick="playP5Sfx('preview')" onmouseenter="playP5Sfx('hover')">
+                                    <div class="relative bg-black border-b-3 border-white">
+                                        <video autoplay loop muted playsinline class="w-full h-[280px] sm:h-[340px] object-cover object-top">
+                                            <source src="https://cdn.imageurlgenerator.com/uploads/eec35998-d74f-431a-9d93-46d6a820893a.mp4" type="video/mp4">
+                                        </video>
+                                        <span class="absolute top-3 left-3 bg-p5red text-white font-display text-xs px-2.5 py-0.5 border border-white transform -skew-x-12">
+                                            REEL #05 // SHOWCASE
+                                        </span>
+                                    </div>
+                                    <div class="p-3.5 sm:p-4 bg-zinc-950">
+                                        <h4 class="font-display text-xl sm:text-2xl text-white">CREATIVE BREAKDOWN &amp; MOTION SHOWCASE 05</h4>
+                                        <p class="text-xs text-zinc-300 mt-1">
+                                            <strong class="text-p5cyan">Pekerjaan:</strong> Proses pengerjaan digital imaging &amp; animasi layer-by-layer berkualitas studio.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- ==========================================
+                     SECTION 6: SYSTEM / CONTACT & MULTI-SFX SOUND TEST
+                     ========================================== -->
+                <section id="section-contact" class="p5-section hidden">
+                    <div class="space-y-8">
+                        <div class="p5-comic-box p-5 sm:p-12 bg-p5red p5-red-halftone relative overflow-hidden p5-stagger-item" style="--stagger-index: 0">
+                            
+                            <div class="max-w-3xl relative z-10">
+                                <div class="inline-block bg-black text-p5cyan font-display text-sm sm:text-lg px-3.5 py-1 border-2 border-white transform -skew-x-12 mb-3 sm:mb-4 shadow-[3px_3px_0_#000]">
+                                    ★ PHANTOM THIEVES CALLING CARD
+                                </div>
+                                <h2 class="font-display text-3xl sm:text-7xl text-white uppercase leading-none tracking-tight drop-shadow-[5px_5px_0_#000] mb-3 sm:mb-4">
+                                    LET'S STEAL THE SHOW &amp; CREATE SOMETHING EPIC.
+                                </h2>
+                                <p class="text-white font-bold text-sm sm:text-lg bg-black/85 p-3.5 sm:p-4 border-2 border-white mb-6 sm:mb-8 shadow-[5px_5px_0_#000]">
+                                    Ready to elevate your esports team, tournament broadcast, or brand visual identity? Send a Calling Card directly to Muhammad Audrey Al Fikri via Email, WhatsApp, or Instagram!
+                                </p>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5 sm:gap-4 mb-6 sm:mb-8">
+                                    <a href="mailto:odreproject@gmail.com" onclick="playP5Sfx('calling_card')" onmouseenter="playP5Sfx('hover')" class="bg-black hover:bg-white text-white hover:text-black border-3 sm:border-4 border-white p-4 sm:p-5 transform -skew-x-6 transition-all shadow-[5px_5px_0_#000] group min-h-[48px]">
+                                        <i data-lucide="mail" class="w-6 sm:w-8 h-6 sm:h-8 text-p5cyan group-hover:text-p5red mb-2"></i>
+                                        <div class="font-display text-lg sm:text-xl">EMAIL</div>
+                                        <div class="text-[11px] sm:text-xs font-bold truncate opacity-90">odreproject@gmail.com</div>
+                                    </a>
+
+                                    <a href="https://wa.me/62895401654579" target="_blank" rel="noopener noreferrer" onclick="playP5Sfx('calling_card')" onmouseenter="playP5Sfx('hover')" class="bg-black hover:bg-p5cyan text-white hover:text-black border-3 sm:border-4 border-white p-4 sm:p-5 transform -skew-x-6 transition-all shadow-[5px_5px_0_#000] group min-h-[48px]">
+                                        <i data-lucide="phone-call" class="w-6 sm:w-8 h-6 sm:h-8 text-p5yellow group-hover:text-black mb-2"></i>
+                                        <div class="font-display text-lg sm:text-xl">WHATSAPP</div>
+                                        <div class="text-[11px] sm:text-xs font-bold truncate opacity-90">+62 895-4016-54579</div>
+                                    </a>
+
+                                    <a href="https://instagram.com/odreproject" target="_blank" rel="noopener noreferrer" onclick="playP5Sfx('calling_card')" onmouseenter="playP5Sfx('hover')" class="bg-black hover:bg-p5yellow text-white hover:text-black border-3 sm:border-4 border-white p-4 sm:p-5 transform -skew-x-6 transition-all shadow-[5px_5px_0_#000] group min-h-[48px]">
+                                        <i data-lucide="instagram" class="w-6 sm:w-8 h-6 sm:h-8 text-white group-hover:text-black mb-2"></i>
+                                        <div class="font-display text-lg sm:text-xl">INSTAGRAM</div>
+                                        <div class="text-[11px] sm:text-xs font-bold truncate opacity-90">@odreproject</div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- ==========================================
+         4. FULLSCREEN SPLIT-VIEW PROJECT MODAL
+         ========================================== -->
+    <div id="fullscreen-modal" class="fixed inset-0 z-[110] hidden items-center justify-center p-2 sm:p-6 bg-black/95 backdrop-blur-md">
+        <div class="relative w-full max-w-6xl bg-zinc-950 border-3 sm:border-4 border-white shadow-[10px_10px_0_#e60012] sm:shadow-[15px_15px_0_#e60012] overflow-hidden flex flex-col lg:flex-row max-h-[95vh] sm:max-h-[92vh]">
+            
+            <button onclick="closeFullscreenModal()" onmouseenter="playP5Sfx('hover')" class="absolute top-3 right-3 sm:top-4 sm:right-4 z-30 bg-p5red hover:bg-white text-white hover:text-black font-display text-sm sm:text-xl px-3.5 sm:px-4 py-1.5 border-2 sm:border-3 border-white transform -skew-x-12 shadow-[3px_3px_0_#000] flex items-center gap-1.5 cursor-pointer min-h-[44px]">
+                <span>CLOSE [ESC]</span>
+                <i data-lucide="x" class="w-4 sm:w-5 h-4 sm:h-5"></i>
+            </button>
+
+            <div class="lg:w-7/12 bg-black flex items-center justify-center p-3 sm:p-8 min-h-[240px] max-h-[42vh] sm:max-h-[50vh] lg:max-h-none border-b-3 sm:border-b-4 lg:border-b-0 lg:border-r-4 border-white relative">
+                <img id="modal-img" src="" alt="Project Fullscreen" class="max-w-full max-h-[38vh] lg:max-h-[78vh] object-contain">
+            </div>
+
+            <div class="lg:w-5/12 p-4 sm:p-8 overflow-y-auto flex flex-col justify-between bg-zinc-950">
+                <div>
+                    <div class="flex flex-wrap items-center gap-2 mb-2 sm:mb-3 pr-24 sm:pr-32">
+                        <span id="modal-cat" class="bg-p5red text-white font-display text-xs sm:text-sm px-2.5 sm:px-3 py-0.5 border border-white transform -skew-x-12"></span>
+                        <span id="modal-role" class="bg-p5cyan text-black font-display text-xs sm:text-sm px-2.5 sm:px-3 py-0.5 border border-black transform -skew-x-12"></span>
+                    </div>
+
+                    <h3 id="modal-title" class="font-display text-3xl sm:text-5xl text-white uppercase tracking-wide leading-none mb-4 sm:mb-6 pr-10 sm:pr-16"></h3>
+
+                    <div class="bg-zinc-900 border-l-4 border-p5red p-3 sm:p-4 mb-3 sm:mb-4">
+                        <h4 class="font-display text-sm sm:text-base text-p5yellow tracking-wider uppercase mb-1">
+                            ★ DESKRIPSI PEKERJAAN:
+                        </h4>
+                        <p id="modal-desc-id" class="text-zinc-100 text-xs sm:text-base leading-relaxed"></p>
+                    </div>
+
+                    <div class="bg-black border border-zinc-800 p-3 sm:p-4 mb-4 sm:mb-5">
+                        <h4 class="font-display text-[11px] sm:text-xs text-p5cyan tracking-wider uppercase mb-1">
+                            PROJECT OVERVIEW (EN):
+                        </h4>
+                        <p id="modal-desc-en" class="text-zinc-400 text-xs sm:text-sm leading-relaxed"></p>
+                    </div>
+
+                    <div>
+                        <span class="block font-display text-[11px] sm:text-xs text-zinc-400 uppercase tracking-widest mb-2">
+                            DELIVERABLES:
+                        </span>
+                        <div id="modal-deliverables" class="flex flex-wrap gap-1.5 sm:gap-2"></div>
+                    </div>
+                </div>
+
+                <div class="mt-6 pt-3 sm:pt-4 border-t-2 border-zinc-800 flex items-center justify-between">
+                    <button onclick="modalStep(-1)" onmouseenter="playP5Sfx('hover')" class="bg-zinc-900 hover:bg-p5cyan text-white hover:text-black font-display text-sm sm:text-lg px-4 sm:px-5 py-2 border-2 border-white transform -skew-x-12 transition-colors cursor-pointer min-h-[44px]">
+                        ◀ PREV
+                    </button>
+                    <button onclick="modalStep(1)" onmouseenter="playP5Sfx('hover')" class="bg-p5red hover:bg-p5cyan text-white hover:text-black font-display text-sm sm:text-lg px-4 sm:px-5 py-2 border-2 border-white transform -skew-x-12 transition-colors cursor-pointer min-h-[44px]">
+                        NEXT ▶
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ==========================================
+         4.5 PERSONAL PROJECT 3D STACK MODAL
+         ========================================== -->
+    <div id="personal-modal" class="fixed inset-0 z-[120] hidden items-center justify-center bg-black/95 backdrop-blur-md overflow-hidden">
+        
+        <button onclick="closePersonalModal()" onmouseenter="playP5Sfx('hover')" class="absolute top-4 right-4 z-50 bg-p5red hover:bg-white text-white hover:text-black font-display text-sm sm:text-xl px-4 py-1.5 sm:py-2 border-2 sm:border-3 border-white transform -skew-x-12 shadow-[3px_3px_0_#000] flex items-center gap-1.5 cursor-pointer transition-colors min-h-[44px]">
+            <span>CLOSE [ESC]</span>
+            <i data-lucide="x" class="w-4 sm:w-5 h-4 sm:h-5"></i>
+        </button>
+
+        <button onclick="personalModalStep(-1)" onmouseenter="playP5Sfx('hover')" class="absolute left-2 sm:left-10 z-40 bg-black hover:bg-p5cyan text-white hover:text-black p-3 sm:p-5 border-2 sm:border-4 border-zinc-700 hover:border-white transform -skew-x-12 transition-all cursor-pointer shadow-[4px_4px_0_#000]">
+            <i data-lucide="chevron-left" class="w-6 sm:w-10 h-6 sm:h-10"></i>
+        </button>
+        
+        <button onclick="personalModalStep(1)" onmouseenter="playP5Sfx('hover')" class="absolute right-2 sm:right-10 z-40 bg-black hover:bg-p5cyan text-white hover:text-black p-3 sm:p-5 border-2 sm:border-4 border-zinc-700 hover:border-white transform -skew-x-12 transition-all cursor-pointer shadow-[4px_4px_0_#000]">
+            <i data-lucide="chevron-right" class="w-6 sm:w-10 h-6 sm:h-10"></i>
+        </button>
+
+        <!-- 3D Card Stack Container -->
+        <div class="relative w-full max-w-[280px] sm:max-w-[400px] h-[75vh] sm:h-[80vh] flex items-center justify-center perspective-[1200px]">
+            
+            <div id="personal-bg-left" class="absolute w-[85%] h-[85%] bg-zinc-900 border-2 border-zinc-800 opacity-40 transform -translate-x-[40%] sm:-translate-x-[50%] translate-z-[-200px] rotate-y-[15deg] blur-[2px] transition-all duration-300 pointer-events-none">
+                <img id="personal-img-left" src="" class="w-full h-full object-cover grayscale opacity-50">
+            </div>
+
+            <div id="personal-bg-right" class="absolute w-[85%] h-[85%] bg-zinc-900 border-2 border-zinc-800 opacity-40 transform translate-x-[40%] sm:translate-x-[50%] translate-z-[-200px] rotate-y-[-15deg] blur-[2px] transition-all duration-300 pointer-events-none">
+                <img id="personal-img-right" src="" class="w-full h-full object-cover grayscale opacity-50">
+            </div>
+
+            <!-- Active Center Card -->
+            <div id="personal-active-card" class="relative z-30 w-[95%] sm:w-full h-full bg-zinc-950 border-4 border-zinc-600 shadow-[0_0_50px_rgba(0,0,0,0.9),10px_10px_0_#e60012] flex flex-col transition-all duration-300 transform">
+                <div class="absolute -top-3 -left-3 w-10 h-10 border-t-4 border-l-4 border-p5red z-40 pointer-events-none"></div>
+                <div class="absolute -bottom-3 -right-3 w-10 h-10 border-b-4 border-r-4 border-p5cyan z-40 pointer-events-none"></div>
+                
+                <div class="p-2 sm:p-3 bg-zinc-900 flex justify-between items-center border-b-2 border-zinc-800">
+                    <span id="personal-modal-type" class="text-p5yellow font-display text-[10px] sm:text-xs tracking-widest uppercase bg-black px-2 py-0.5 border border-zinc-700"></span>
+                    <span id="personal-modal-index" class="text-zinc-400 font-display text-xs"></span>
+                </div>
+
+                <div class="flex-1 relative overflow-hidden bg-black p-2 flex items-center justify-center cursor-crosshair">
+                    <img id="personal-modal-img" src="" class="max-w-full max-h-full object-contain">
+                </div>
+
+                <div class="p-4 sm:p-6 bg-gradient-to-t from-black to-zinc-950 border-t-2 border-zinc-800 text-center flex-shrink-0">
+                    <h4 id="personal-modal-title" class="font-display text-xl sm:text-2xl text-white uppercase tracking-wider mb-1 sm:mb-2"></h4>
+                    <p id="personal-modal-desc" class="text-zinc-400 text-[11px] sm:text-xs leading-relaxed italic"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         5. JAVASCRIPT APPLICATION LOGIC
+         ========================================== -->
+    <script>
+        lucide.createIcons();
+
+        const portfolioProjects = [
+            {
+                id: 1,
+                title: "Arcade Aces",
+                category: "esports social",
+                badge: "Live Stream & Fighting Game Hub",
+                role: "Graphic Designer (2025)",
+                img: "https://drive.google.com/thumbnail?id=1fV9cGTFdFCi7KDPuwKTdJx-3eug2Fypb&sz=w1000",
+                deliverables: ["Digital Imaging Poster", "Stream Overlays", "Social Media Feeds", "Influencer Collab Graphics"],
+                descId: "Merancang desain visual media sosial, poster digital imaging, serta aset overlay live streaming untuk turnamen dan komunitas fighting game Indonesia. Mengubah pengumuman standar menjadi konten interaktif yang berhasil meraih lebih dari 1 juta total views dan +5.000 followers baru.",
+                descEn: "Designed social media creatives, digital imaging posters, and streaming overlay assets. Turned standard posts into engaging fan experiences driving 1M+ total views."
+            },
+            {
+                id: 2,
+                title: "AURA Esports",
+                category: "esports social",
+                badge: "Esports Organization",
+                role: "Graphic Designer (2023–2024)",
+                img: "https://drive.google.com/thumbnail?id=17znn8FL_rFm0r7kOUWDMOWNT3MdQktWc&sz=w1000",
+                deliverables: ["Matchday Posters", "Player Focus Graphics", "Campaign Visuals", "Style Guide Templates"],
+                descId: "Mengelola dan mendesain kebutuhan kreatif media sosial AURA Esports dengan menerjemahkan momen penting pertandingan menjadi poster digital imaging yang dramatis. Mencakup konten fokus pemain, pengumuman roster, hingga kampanye turnamen besar yang mengumpulkan lebih dari 100.000+ likes.",
+                descEn: "Managed social media creatives by translating key game moments into striking visuals. Projects ranged from player-focused content to major match campaign assets."
+            },
+            {
+                id: 3,
+                title: "Persija Esports",
+                category: "esports social",
+                badge: "Esports Team",
+                role: "Jr. Graphic Designer (2024–2025)",
+                img: "https://drive.google.com/thumbnail?id=11NK1qoUwke4ReY72Ej531RHHu6aZBtl4&sz=w1000",
+                deliverables: ["Digital Imaging Posters", "Tournament Overlays", "Instagram & TikTok Visuals", "Live Stream Assets"],
+                descId: "Mendesain grafik media sosial berenergi tinggi, poster digital imaging, dan overlay turnamen untuk berbagai divisi kompetitif Persija Esports. Konten visual ini berkontribusi pada pertumbuhan followers Instagram sebesar 100% (70K ke 143K) serta 4,5 juta views di TikTok.",
+                descEn: "Designed compelling social media graphics, tournament assets, and digital imaging for Persija Esports, contributing to a 100% Instagram follower growth (70K to 143K)."
+            },
+            {
+                id: 4,
+                title: "MAS SUKRO CUP – SEASON 3",
+                category: "esports event",
+                badge: "Esports Tournament (Mineski Global)",
+                role: "Freelance Graphic Designer",
+                img: "https://drive.google.com/thumbnail?id=1NKmVe60OC9CcNxN3Etyr8UgsAKrC14qG&sz=w1000",
+                deliverables: ["Tournament Key Visual", "Broadcast Graphics", "Matchday Visuals", "FOH Signage & Lanyards"],
+                descId: "Mengembangkan dan mengeksekusi rangkaian lengkap aset visual untuk turnamen MAS SUKRO CUP Season 3 di bawah Mineski Global. Pekerjaan meliputi pembuatan poster turnamen, grafik broadcast live stream, visual matchday, hingga kebutuhan cetak fisik seperti signage Front-of-House (FOH), ID Card/kredensial, dan desain lanyard.",
+                descEn: "Developed and executed a comprehensive range of visual assets for MAS SUKRO CUP Season 3 under Mineski Global, including tournament posters, broadcast graphics, FOH signage, credentials, and lanyard designs."
+            },
+            {
+                id: 5,
+                title: "Garena Youth Championship",
+                category: "esports event",
+                badge: "Esports Tournament (Mineski Global)",
+                role: "Freelance Graphic Designer",
+                img: "https://drive.google.com/thumbnail?id=10kvx9Px70bWvqUG2BobMq86f9nRTnYxz&sz=w1000",
+                deliverables: ["Tournament Branding", "Broadcast Overlays", "Social Media Kit", "Event Collaterals"],
+                descId: "Merancang dan mengeksekusi aset visual menyeluruh untuk turnamen pelajar Garena Youth Championship bersama Mineski Global. Mencakup pembuatan branding turnamen, konten media sosial, aset broadcast pertandingan, serta materi promosi event.",
+                descEn: "Developed and executed a comprehensive range of visual assets for the Garena Youth Championship under Mineski Global, covering tournament branding, social media content, and broadcast graphics."
+            },
+            {
+                id: 6,
+                title: "Free Fire Nusantara Series",
+                category: "esports event",
+                badge: "Official Esports Circuit",
+                role: "Freelance Graphic Designer",
+                img: "https://drive.google.com/thumbnail?id=1CzR0o8L6aFrgSshMps5dCX0k8wnZD9CB&sz=w1000",
+                deliverables: ["Key Visual Poster", "Digital Imaging", "Tournament Social Media Assets"],
+                descId: "Membuat key visual turnamen, poster digital imaging, dan aset publikasi media sosial untuk rangkaian kompetisi resmi Free Fire Nusantara Series dengan fokus pada komposisi kompetitif yang berani.",
+                descEn: "Tournament key visuals, digital imaging posters, and engaging social media assets designed specifically for the Free Fire Nusantara Series competitive circuit."
+            },
+            {
+                id: 7,
+                title: "POCO Extreme League",
+                category: "event esports",
+                badge: "Major Tournament Grand Final",
+                role: "Event Graphic Designer",
+                img: "https://drive.google.com/thumbnail?id=164ZiUfr9n6nfLNgEzWieh5zSwC0QpTg1&sz=w1000",
+                deliverables: ["Grand Final Key Visual", "Promotional Posters", "Bracket & Schedule Graphics"],
+                descId: "Merancang key visual utama dan materi promosi untuk ajang POCO Xtreme League Grand Final. Menggabungkan identitas brand POCO yang agresif dan modern dengan tata letak informasi turnamen yang tajam dan mudah dibaca.",
+                descEn: "Created tournament key visuals and promotional materials for POCO Extreme League, fusing aggressive branding with clean information design."
+            },
+            {
+                id: 8,
+                title: "TECNO Game Fest",
+                category: "event",
+                badge: "Gaming Festival & Event",
+                role: "Event Visual Designer (2024)",
+                img: "https://drive.google.com/thumbnail?id=1lUUOBuSj9WnKhJnGJxGM1qQWJ8F2QFEY&sz=w1000",
+                deliverables: ["Stage Backdrops", "Event Banners", "Merchandise Design", "Digital Promo Content"],
+                descId: "Mendesain dan memproduksi berbagai aset visual untuk Tecno Game Fest 2024, memastikan identitas visual yang konsisten mulai dari backdrop panggung utama, banner area, konten promosi digital, hingga desain merchandise pengunjung.",
+                descEn: "Designed and produced visual assets for Tecno Game Fest, ensuring consistent branding across stage backdrops, banners, digital content, and merchandise."
+            },
+            {
+                id: 9,
+                title: "PUBG Mobile Indonesia",
+                category: "esports social",
+                badge: "Esports Publisher",
+                role: "Freelance Graphic Designer",
+                img: "https://drive.google.com/thumbnail?id=1wxgNt8KQ446XPpzIsv14pdSv2j_ccMIh&sz=w1000",
+                deliverables: ["Social Media Visuals", "Digital Imaging", "Community Engagement Posts"],
+                descId: "Membuat aset visual media sosial dan komposisi digital imaging untuk PUBG Mobile Indonesia guna meningkatkan interaksi komunitas serta kesadaran audiens terhadap event resmi.",
+                descEn: "Created engaging social media assets and digital imaging for PUBG Mobile Indonesia, boosting community engagement and event awareness."
+            },
+            {
+                id: 10,
+                title: "PUBG Mobile Design Challenge",
+                category: "esports",
+                badge: "Esports Digital Imaging",
+                role: "Digital Imaging Artist",
+                img: "https://drive.google.com/thumbnail?id=1MPQ8bSz9cSoVqAdbXwWLDfRLLNL99qf1&sz=w1000",
+                deliverables: ["Cinematic Esports Poster", "Advanced Photo Manipulation", "Color Grading"],
+                descId: "Mengerjakan poster sinematik untuk kompetisi desain resmi PUBG Mobile Esports ID. Menggunakan teknik manipulasi foto tingkat lanjut, pencahayaan dramatis, dan compositing untuk menangkap atmosfer panasnya pertarungan esports.",
+                descEn: "Crafted cinematic posters capturing the intensity of esports using advanced digital imaging and compositing for PUBG Mobile Esports ID Official."
+            },
+            {
+                id: 11,
+                title: "STUN.GG",
+                category: "social",
+                badge: "Creative & Talent Agency",
+                role: "Graphic Designer (2023–2024)",
+                img: "https://drive.google.com/thumbnail?id=1lazTK8JF5ra5OZOBOoNSo5kqal0UMdSC&sz=w1000",
+                deliverables: ["YouTube Thumbnails", "Talent Announcement Posters", "Instagram Carousel & Feeds"],
+                descId: "Mendesain thumbnail YouTube yang memancing klik (CTR tinggi, menghasilkan 10.000+ views pada pengumuman Brand Ambassador) serta merancang konten feed Instagram untuk para talent dan influencer seperti elsajapasal, laurazhipora, dan suci.",
+                descEn: "Designed eye-catching YouTube thumbnails for talents maximizing CTR, alongside consistent Instagram content aligned with the agency's branding."
+            },
+            {
+                id: 12,
+                title: "Persija FC",
+                category: "social event",
+                badge: "Sports Club",
+                role: "Freelance Graphic Designer",
+                img: "https://drive.google.com/thumbnail?id=10xJ_qIKjoqSATNrkzJjV1Nrfj4LP6WiL&sz=w1000",
+                deliverables: ["Matchday Posters", "Player Spotlight Visuals", "Social Media Campaign"],
+                descId: "Merancang grafik hari pertandingan (matchday), sorotan pemain, dan materi kampanye media sosial untuk Persija, membawa atmosfer stadion yang bersemangat ke dalam karya visual digital bagi para pendukung.",
+                descEn: "Designed match-day graphics, player highlights, and engaging social media assets for Persija FC, bringing the energy of the pitch to digital platforms."
+            },
+            {
+                id: 13,
+                title: "Marvel Cinematic Poster",
+                category: "social",
+                badge: "Digital Imaging Project",
+                role: "Graphic Designer",
+                img: "https://drive.google.com/thumbnail?id=1ELizyoM_vsabwuxygF_S6jKiaE9sKKcZ&sz=w1000",
+                deliverables: ["Studio-Quality Poster", "Concept Compositing", "Dramatic Lighting & FX"],
+                descId: "Proyek eksplorasi poster sinematik yang memvisualisasikan teori film Avengers: Doomsday. Berfokus pada teknik komposisi dramatis, penyatuan puluhan elemen gambar (compositing), dan efek cahaya setara poster film studio.",
+                descEn: "Cinematic fan posters visualizing theories for Avengers: Doomsday. Explored dramatic composition and advanced digital imaging to produce studio-quality visuals."
+            },
+            {
+                id: 14,
+                title: "Sentra Gamers",
+                category: "esports branding",
+                badge: "Gaming Community",
+                role: "Brand & Graphic Designer",
+                img: "https://drive.google.com/thumbnail?id=1kw2IxoFdcNuh04E6MfG6cv4jDj6jBczi&sz=w1000",
+                deliverables: ["Brand Identity", "Social Media Templates", "Promotional Banners"],
+                descId: "Mengembangkan identitas branding yang kohesif dan materi promosi visual untuk Sentra Gamers guna membangun citra digital yang kuat di tengah komunitas gamer Indonesia.",
+                descEn: "Developed cohesive branding and promotional visuals for Sentra Gamers, establishing a strong digital presence within the gaming and esports community."
+            },
+            {
+                id: 15,
+                title: "Farmity",
+                category: "branding social",
+                badge: "Brand Identity & Social",
+                role: "Brand & Social Media Designer",
+                img: "https://drive.google.com/thumbnail?id=1CCPI4_oYxoqmzcDV0V-YloYvHWQ5ruYr&sz=w1000",
+                deliverables: ["Visual Identity", "Packaging & Promo Visuals", "Social Media Feeds"],
+                descId: "Menciptakan identitas visual yang segar dan konten media sosial terstruktur untuk Farmity guna meningkatkan brand awareness serta daya tarik produk di platform digital.",
+                descEn: "Created engaging visual identity and social media content for Farmity to boost brand awareness and digital presence with a fresh and modern approach."
+            },
+            {
+                id: 16,
+                title: "Fromeltiona",
+                category: "branding social",
+                badge: "Lifestyle Branding",
+                role: "Visual Brand Designer",
+                img: "https://drive.google.com/thumbnail?id=1ZILr0lXudimjy5ZPu1ttRqug3KMVFm29&sz=w1000",
+                deliverables: ["Aesthetic Brand Kit", "Instagram Grid Layout", "Promotional Flyers"],
+                descId: "Merancang aset media sosial yang estetik serta materi branding untuk Fromeltiona dengan fokus pada keselarasan warna, tipografi, dan citra profesional.",
+                descEn: "Designed aesthetic social media assets and branding materials for Fromeltiona, focusing on establishing a cohesive, attractive, and professional digital footprint."
+            },
+            {
+                id: 17,
+                title: "Kirana Real Estate",
+                category: "branding social",
+                badge: "Real Estate Marketing",
+                role: "Graphic Designer",
+                img: "https://drive.google.com/thumbnail?id=17ns8Xg6PBP7qNKrzgKJyZ_KLA5UWOBCO&sz=w1000",
+                deliverables: ["Property Marketing Kit", "Corporate Social Media", "Brochure & Flyer Visuals"],
+                descId: "Mendesain identitas visual profesional dan materi pemasaran properti untuk Kirana Real Estate guna meningkatkan kepercayaan calon pembeli serta kualitas presentasi katalog di media sosial.",
+                descEn: "Designed professional visual identity and marketing materials for Kirana Real Estate, elevating property presentations and brand trust across social media channels."
+            },
+            {
+                id: 18,
+                title: "Super Salad",
+                category: "social branding",
+                badge: "Food & Beverage",
+                role: "Social Media Designer",
+                img: "https://drive.google.com/thumbnail?id=14VBhUPUgjPFyCGSM_GMnzh_BuA-d9R3y&sz=w1000",
+                deliverables: ["Product Highlight Graphics", "Nutritional Infographics", "F&B Social Media Campaign"],
+                descId: "Mengembangkan visual media sosial yang menonjolkan kesegaran dan manfaat produk Super Salad melalui palet warna hijau cerah, tipografi bersih, dan tata letak edukatif yang menarik perhatian konsumen.",
+                descEn: "Developed social media visuals highlighting product benefits with a fresh and approachable visual tone, applying vibrant green palettes and clean layouts."
+            }
+        ];
+
+        // --- PERSONAL PROJECTS (DIGITAL IMAGING ARCHIVE POSTERS) ---
+        const personalProjects = [
+            {
+                id: 1,
+                title: "DI POSTER 01",
+                type: "Digital Imaging",
+                img: "https://smooth-pink-rlxuv45e.edgeone.dev/imgi_20_819354369_18443191789124458_5459312323295805903_n.jpeg",
+                desc: "Karya digital imaging poster personal oleh Muhammad Audrey. Fokus pada komposisi visual, tata cahaya dramatis, dan photo manipulation."
+            },
+            {
+                id: 2,
+                title: "DI POSTER 02",
+                type: "Digital Imaging",
+                img: "https://smooth-pink-rlxuv45e.edgeone.dev/imgi_21_811864821_18442382773124458_4128256081040405507_n.jpeg",
+                desc: "Karya digital imaging poster personal oleh Muhammad Audrey. Eksplorasi efek visual, warna sinematik, dan compositing."
+            },
+            {
+                id: 3,
+                title: "DI POSTER 03",
+                type: "Digital Imaging",
+                img: "https://smooth-pink-rlxuv45e.edgeone.dev/imgi_22_773612889_18436281394124458_7494174633618133038_n.jpeg",
+                desc: "Karya digital imaging poster personal oleh Muhammad Audrey. Penataan elemen grafis berenergi tinggi untuk publikasi media digital."
+            },
+            {
+                id: 4,
+                title: "DI POSTER 04",
+                type: "Digital Imaging",
+                img: "https://smooth-pink-rlxuv45e.edgeone.dev/imgi_23_761124908_18434866540124458_8556478934945008982_n.jpeg",
+                desc: "Karya digital imaging poster personal oleh Muhammad Audrey. Penggabungan objek foto dengan pencahayaan dan suasana atmosferik."
+            },
+            {
+                id: 5,
+                title: "DI POSTER 05",
+                type: "Digital Imaging",
+                img: "https://smooth-pink-rlxuv45e.edgeone.dev/imgi_24_758678148_18434053666124458_7429445123255393142_n.jpeg",
+                desc: "Karya digital imaging poster personal oleh Muhammad Audrey. Eksplorasi gaya visual tajam, kontras tinggi, dan detail sinematik."
+            },
+            {
+                id: 6,
+                title: "DI POSTER 06",
+                type: "Digital Imaging",
+                img: "https://smooth-pink-rlxuv45e.edgeone.dev/imgi_25_758356763_18433918843124458_7728025604917569999_n.jpeg",
+                desc: "Karya digital imaging poster personal oleh Muhammad Audrey. Fokus pada pengolahan tone warna dan penyatuan layer gambar."
+            },
+            {
+                id: 7,
+                title: "DI POSTER 07",
+                type: "Digital Imaging",
+                img: "https://smooth-pink-rlxuv45e.edgeone.dev/imgi_26_754143266_18433142494124458_6552672843525056729_n.jpeg",
+                desc: "Karya digital imaging poster personal oleh Muhammad Audrey. Eksplorasi poster aksi kompetitif dengan hirarki tipografi tegas."
+            },
+            {
+                id: 8,
+                title: "DI POSTER 08",
+                type: "Digital Imaging",
+                img: "https://smooth-pink-rlxuv45e.edgeone.dev/imgi_27_751939917_18432799912124458_9203350212463444440_n.jpeg",
+                desc: "Karya digital imaging poster personal oleh Muhammad Audrey. Komposisi poster kreatif berkualitas profesional."
+            },
+            {
+                id: 9,
+                title: "DI POSTER 09",
+                type: "Digital Imaging",
+                img: "https://smooth-pink-rlxuv45e.edgeone.dev/imgi_28_747669653_18432213124124458_3039838317981047540_n.jpeg",
+                desc: "Karya digital imaging poster personal oleh Muhammad Audrey. Konsep poster visual bercerita dan manipulasi grafis."
+            },
+            {
+                id: 10,
+                title: "DI POSTER 10",
+                type: "Digital Imaging",
+                img: "https://smooth-pink-rlxuv45e.edgeone.dev/imgi_29_744858380_18432023329124458_2470387786710109621_n.jpeg",
+                desc: "Karya digital imaging poster personal oleh Muhammad Audrey. Efek visual dan pencahayaan kompleks berkualitas sinematik."
+            },
+            {
+                id: 11,
+                title: "DI POSTER 11",
+                type: "Digital Imaging",
+                img: "https://smooth-pink-rlxuv45e.edgeone.dev/imgi_30_747191070_18431906698124458_2087729998171188720_n.jpeg",
+                desc: "Karya digital imaging poster personal oleh Muhammad Audrey. Desain poster berenergi tinggi untuk promosi digital."
+            },
+            {
+                id: 12,
+                title: "DI POSTER 12",
+                type: "Digital Imaging",
+                img: "https://smooth-pink-rlxuv45e.edgeone.dev/imgi_31_731788355_18430253134124458_3687028525222516485_n.jpeg",
+                desc: "Karya digital imaging poster personal oleh Muhammad Audrey. Eksplorasi estetika visual modern dan compositing."
+            },
+            {
+                id: 13,
+                title: "DI POSTER 13",
+                type: "Digital Imaging",
+                img: "https://smooth-pink-rlxuv45e.edgeone.dev/imgi_32_669793146_18417894421124458_2073026247692190894_n.jpeg",
+                desc: "Karya digital imaging poster personal oleh Muhammad Audrey. Manipulasi foto lanjutan dengan tata cahaya terfokus."
+            },
+            {
+                id: 14,
+                title: "DI POSTER 14",
+                type: "Digital Imaging",
+                img: "https://smooth-pink-rlxuv45e.edgeone.dev/imgi_33_656272548_18414688666124458_8893283284244695229_n.jpeg",
+                desc: "Karya digital imaging poster personal oleh Muhammad Audrey. Desain poster aksi dan compositing elemen bertingkat."
+            },
+            {
+                id: 15,
+                title: "DI POSTER 15",
+                type: "Digital Imaging",
+                img: "https://smooth-pink-rlxuv45e.edgeone.dev/imgi_34_635024837_18407796610124458_8554862247305450240_n.jpeg",
+                desc: "Karya digital imaging poster personal oleh Muhammad Audrey. Komposisi visual berani dan penyesuaian warna presisi."
+            },
+            {
+                id: 16,
+                title: "DI POSTER 16",
+                type: "Digital Imaging",
+                img: "https://smooth-pink-rlxuv45e.edgeone.dev/imgi_35_583131849_18395053375124458_7614204025413641461_n.jpeg",
+                desc: "Karya digital imaging poster personal oleh Muhammad Audrey. Eksplorasi gaya poster sinematik dan efek visual khusus."
+            },
+            {
+                id: 17,
+                title: "DI POSTER 17",
+                type: "Digital Imaging",
+                img: "https://smooth-pink-rlxuv45e.edgeone.dev/imgi_36_585006461_18395450092124458_263656120590573916_n.jpeg",
+                desc: "Karya digital imaging poster personal oleh Muhammad Audrey. Pengolahan detail gambar, bayangan, dan higlight dramatis."
+            },
+            {
+                id: 18,
+                title: "DI POSTER 18",
+                type: "Digital Imaging",
+                img: "https://smooth-pink-rlxuv45e.edgeone.dev/imgi_38_619902423_18403159504124458_7674877377079511189_n.jpeg",
+                desc: "Karya digital imaging poster personal oleh Muhammad Audrey. Desain poster publikasi berdaya tarik visual kuat."
+            },
+            {
+                id: 19,
+                title: "DI POSTER 19",
+                type: "Digital Imaging",
+                img: "https://smooth-pink-rlxuv45e.edgeone.dev/imgi_39_617266178_18401819314124458_8624905202614480495_n.jpeg",
+                desc: "Karya digital imaging poster personal oleh Muhammad Audrey. Efek visual atmosferik dengan teknik compositing mutakhir."
+            },
+            {
+                id: 20,
+                title: "DI POSTER 20",
+                type: "Digital Imaging",
+                img: "https://smooth-pink-rlxuv45e.edgeone.dev/imgi_41_836331647_18445296547124458_6197978331826553629_n.jpeg",
+                desc: "Karya digital imaging poster personal oleh Muhammad Audrey. Masterpiece poster penutup dengan visual sinematik khas."
+            }
+        ];
+
+        const sectionMeta = {
+            profile: {
+                title: "PROFILE",
+                sub: "ステータス // CONFIDANT PROFILE & EDUCATION",
+                speech: "Looking cool! Here is Muhammad Audrey's Confidant Profile, DKV Education (GPA 3.49), and career highlights!",
+                pitchIndex: 0
+            },
+            skill: {
+                title: "SKILL",
+                sub: "スキルツリーの調整 // CREATIVE STATS & SOFTWARE ARSENAL",
+                speech: "Check out Audrey's 9/10 Digital Imaging, Photoshop, and Visual Storytelling stats! A master of the Adobe Creative Suite.",
+                pitchIndex: 1
+            },
+            quests: {
+                title: "QUESTS",
+                sub: "ミッション // WORK EXPERIENCE & ACHIEVEMENTS",
+                speech: "Every mission completed! From Arcade Aces and Persija Esports to AURA Esports, STUN.GG, and Freelance campaigns!",
+                pitchIndex: 2
+            },
+            works: {
+                title: "WORKS",
+                sub: "ポートフォリオ // SELECTED WORKS & PERSONAL PROJECTS",
+                speech: "Explore 18 selected works ranging from high-voltage esports tournaments to creative brand identities. Select a file to view the full dossier!",
+                pitchIndex: 3
+            },
+            showreel: {
+                title: "SHOWREEL",
+                sub: "ムービー // SELECTED CLIENTS & MOTION GRAPHICS",
+                speech: "Motion in action! Watch the Selected Clients reel and motion graphic showcases!",
+                pitchIndex: 4
+            },
+            contact: {
+                title: "CONTACT",
+                sub: "連絡先 // SEND A CALLING CARD",
+                speech: "Ready to collaborate? Send a Calling Card to Audrey via Email, WhatsApp, or Instagram!",
+                pitchIndex: 5
+            }
+        };
+
+        let currentSection = 'profile';
+        let currentFilter = 'all';
+        let currentLayout = 'grid';
+        let currentInspectorIndex = 0;
+        let currentPersonalIndex = 0;
+        let isAllSectionsMode = false;
+
+        const bgmAudio = document.getElementById('bgm-audio');
+        const bgmToggleBtn = document.getElementById('bgm-toggle-btn');
+        const bgmStatusText = document.getElementById('bgm-status-text');
+        const bgmModeLabel = document.getElementById('bgm-mode-label');
+
+        let isBgmPlaying = true;
+        let userManuallyPausedBgm = false;
+        let isSfxMuted = false;
+        let audioCtx = null;
+        let bootInterval = null;
+        let isBootDismissing = false;
+
+        if (bgmAudio) bgmAudio.volume = 0.2; // Volume diturunkan agar SFX lebih mendominasi
+
+        function ensureAudioContext() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+        }
+
+        function playP5Sfx(type) {
+            if (isSfxMuted) return;
+            ensureAudioContext();
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            const now = audioCtx.currentTime;
+            
+            if (type === 'hover') {
+                // 1. Hover - Swift UI Tick
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(800, now);
+                osc.frequency.exponentialRampToValueAtTime(300, now + 0.05);
+                gain.gain.setValueAtTime(0.04, now);
+                gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+                osc.start(now);
+                osc.stop(now + 0.05);
+            } else if (type === 'slash_transition') {
+                // 2. Slash Transition - Fast Whoosh / Slash Sound
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(800, now);
+                osc.frequency.exponentialRampToValueAtTime(50, now + 0.25);
+                gain.gain.setValueAtTime(0.1, now);
+                gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
+
+                const osc2 = audioCtx.createOscillator();
+                osc2.type = 'square';
+                osc2.frequency.setValueAtTime(1200, now);
+                osc2.frequency.exponentialRampToValueAtTime(100, now + 0.2);
+                osc2.connect(gain);
+                osc2.start(now);
+                osc2.stop(now + 0.2);
+
+                osc.start(now);
+                osc.stop(now + 0.25);
+            } else if (type === 'stat_boost') {
+                // 3. Stat Boost - Positive Chime for skills
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(440, now);
+                osc.frequency.setValueAtTime(660, now + 0.1); 
+                gain.gain.setValueAtTime(0.08, now);
+                gain.gain.linearRampToValueAtTime(0.05, now + 0.1);
+                gain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
+
+                const osc2 = audioCtx.createOscillator();
+                osc2.type = 'triangle';
+                osc2.frequency.setValueAtTime(554, now); 
+                osc2.frequency.setValueAtTime(880, now + 0.1);
+                osc2.connect(gain);
+                osc2.start(now);
+                osc2.stop(now + 0.3);
+
+                osc.start(now);
+                osc.stop(now + 0.3);
+            } else if (type === 'preview' || type === 'calling_card') {
+                // 4. Tech UI Select / Camera Click for works
+                osc.type = 'square';
+                osc.frequency.setValueAtTime(1500, now);
+                osc.frequency.exponentialRampToValueAtTime(200, now + 0.1);
+                gain.gain.setValueAtTime(0.06, now);
+                gain.gain.exponentialRampToValueAtTime(0.001, now + 0.1);
+                osc.start(now);
+                osc.stop(now + 0.1);
+            } else if (type === 'showtime') {
+                // 5. Showtime - Dramatic Boot Intro (Dibuat Lebih Keras & Gahar)
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(150, now);
+                osc.frequency.exponentialRampToValueAtTime(2000, now + 0.4);
+                gain.gain.setValueAtTime(0.2, now); // Gain ditingkatkan
+                gain.gain.exponentialRampToValueAtTime(0.001, now + 0.8);
+                
+                // Tambahan layer oscillator kedua untuk efek 'slash' tebal
+                const osc2 = audioCtx.createOscillator();
+                osc2.type = 'square';
+                osc2.frequency.setValueAtTime(100, now);
+                osc2.frequency.exponentialRampToValueAtTime(1500, now + 0.4);
+                osc2.connect(gain);
+                osc2.start(now);
+                osc2.stop(now + 0.8);
+
+                osc.start(now);
+                osc.stop(now + 0.8);
+            }
+        }
+
+        function updateBgmUI(isPlaying, modeText) {
+            isBgmPlaying = isPlaying;
+            if (bgmStatusText) bgmStatusText.innerText = isPlaying ? 'BGM: ON' : 'BGM: OFF';
+            if (bgmModeLabel) bgmModeLabel.innerText = modeText;
+            
+            const eqBox = document.getElementById('bgm-eq-box');
+            if (eqBox) {
+                if (isPlaying) eqBox.classList.add('bgm-playing');
+                else eqBox.classList.remove('bgm-playing');
+            }
+            const systemBgmText = document.getElementById('system-bgm-text');
+            if (systemBgmText) {
+                systemBgmText.innerText = `BGM: ${isPlaying ? 'ON' : 'OFF'} (${modeText})`;
+            }
+        }
+
+        function startBgmPlayback() {
+            userManuallyPausedBgm = false;
+            ensureAudioContext();
+            updateBgmUI(true, 'BGM LOADING...');
+            if (bgmAudio) {
+                const playPromise = bgmAudio.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        updateBgmUI(true, 'SYSTEM BGM');
+                    }).catch((error) => {
+                        console.warn("Autoplay blocked or link error:", error);
+                        updateBgmUI(false, 'AUTOPLAY BLOCKED / ERROR');
+                    });
+                }
+            }
+        }
+
+        function stopBgmPlayback() {
+            userManuallyPausedBgm = true;
+            updateBgmUI(false, 'SYSTEM BGM');
+            if (bgmAudio) {
+                try { bgmAudio.pause(); } catch (e) {}
+            }
+        }
+
+        function unlockAutoplayOnGesture() {
+            if (!userManuallyPausedBgm && bgmAudio && bgmAudio.paused) {
+                bgmAudio.play().then(() => {
+                    updateBgmUI(true, 'SYSTEM BGM');
+                }).catch(() => {});
+            }
+        }
+        
+        ['pointerdown', 'keydown', 'touchstart', 'click'].forEach(evt => {
+            document.addEventListener(evt, unlockAutoplayOnGesture, { passive: true });
+        });
+
+        window.toggleBgm = function(event) {
+            if (event) event.stopPropagation();
+            if (isBgmPlaying) {
+                stopBgmPlayback();
+            } else {
+                startBgmPlayback();
+            }
+        };
+
+        function loadCustomBgmFile(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const url = URL.createObjectURL(file);
+                if (bgmAudio) {
+                    bgmAudio.src = url;
+                    startBgmPlayback();
+                    updateBgmUI(true, 'CUSTOM BGM');
+                }
+            }
+        }
+
+        function startBootSequence() {
+            const loadingPercent = document.getElementById('loading-percent');
+            const loadingBar = document.getElementById('loading-bar');
+            let pct = 0;
+            if (bootInterval) clearInterval(bootInterval);
+            bootInterval = setInterval(() => {
+                pct += Math.floor(Math.random() * 15) + 5;
+                if (pct >= 100) {
+                    pct = 100;
+                    clearInterval(bootInterval);
+                    const enterBtnText = document.getElementById('enter-btn-text');
+                    if (enterBtnText) enterBtnText.innerText = 'START NAVIGATOR [ENTER]';
+                    const startBtn = document.getElementById('enter-palace-btn');
+                    if (startBtn) startBtn.classList.add('p5-start-ready');
+                    document.getElementById('loading-status-text').innerText = 'METAVERSE NAVIGATOR READY.';
+                }
+                if (loadingPercent) loadingPercent.innerText = `${pct.toString().padStart(3, '0')}%`;
+                if (loadingBar) loadingBar.style.width = `${pct}%`;
+                
+                if (pct > 30) document.getElementById('boot-badge-1').style.opacity = '1';
+                if (pct > 60) document.getElementById('boot-badge-2').style.opacity = '1';
+                if (pct > 90) document.getElementById('boot-badge-3').style.opacity = '1';
+            }, 100);
+        }
+
+        function dismissLoadingScreen() {
+            if (isBootDismissing) return;
+            isBootDismissing = true;
+            if (bootInterval) clearInterval(bootInterval);
+
+            playP5Sfx('showtime');
+            if (!userManuallyPausedBgm) startBgmPlayback();
+
+            const loadingScreen = document.getElementById('loading-screen');
+            if (!loadingScreen) return;
+
+            loadingScreen.classList.add('ripping-open');
+            setTimeout(() => {
+                loadingScreen.style.opacity = '0';
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                    isBootDismissing = false;
+                }, 400);
+            }, 600);
+        }
+
+        function replayLoadingScreen() {
+            const loadingScreen = document.getElementById('loading-screen');
+            if (loadingScreen) {
+                loadingScreen.style.display = 'flex';
+                loadingScreen.style.opacity = '1';
+                loadingScreen.classList.remove('ripping-open');
+                const startBtn = document.getElementById('enter-palace-btn');
+                if (startBtn) startBtn.classList.remove('p5-start-ready');
+                document.getElementById('boot-badge-1').style.opacity = '0';
+                document.getElementById('boot-badge-2').style.opacity = '0';
+                document.getElementById('boot-badge-3').style.opacity = '0';
+                startBootSequence();
+            }
+        }
+
+        function triggerSlashTransition(titleOverride, subOverride) {
+            const slash = document.getElementById('slash-transition');
+            const label = document.getElementById('slash-section-label');
+            const sub = document.getElementById('slash-section-sub');
+            if (slash) {
+                if (titleOverride) label.innerText = titleOverride;
+                if (subOverride) sub.innerText = subOverride;
+                slash.classList.add('active');
+                setTimeout(() => {
+                    slash.classList.remove('active');
+                }, 800);
+            }
+        }
+
+        function switchSection(sectionId) {
+            if (isAllSectionsMode) {
+                const target = document.getElementById(`section-${sectionId}`);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    document.querySelectorAll('.p5-cmd-btn, .p5-mobile-nav-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                        if (btn.dataset.target === sectionId) btn.classList.add('active');
+                    });
+                }
+                return;
+            }
+
+            if (currentSection === sectionId) return;
+            
+            const meta = sectionMeta[sectionId];
+            triggerSlashTransition(meta ? meta.title : "SYSTEM", meta ? meta.sub : "ACCESSING...");
+            playP5Sfx('slash_transition');
+
+            setTimeout(() => {
+                currentSection = sectionId;
+
+                document.querySelectorAll('.p5-cmd-btn, .p5-mobile-nav-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.dataset.target === sectionId) btn.classList.add('active');
+                });
+
+                document.querySelectorAll('.p5-section').forEach(sec => {
+                    sec.classList.add('hidden');
+                    sec.classList.remove('p5-section-enter');
+                });
+
+                const targetSec = document.getElementById(`section-${sectionId}`);
+                if (targetSec) {
+                    targetSec.classList.remove('hidden');
+                    void targetSec.offsetWidth; 
+                    targetSec.classList.add('p5-section-enter');
+                }
+
+                if (sectionMeta[sectionId]) {
+                    const title = document.getElementById('giant-banner-title');
+                    const sub = document.getElementById('giant-banner-sub');
+                    const speech = document.getElementById('navi-speech-text');
+                    if (title) title.innerText = sectionMeta[sectionId].title;
+                    if (sub) sub.innerText = sectionMeta[sectionId].sub;
+                    if (speech) speech.innerText = sectionMeta[sectionId].speech;
+                }
+
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 300);
+        }
+
+        function toggleViewMode() {
+            isAllSectionsMode = !isAllSectionsMode;
+            const btn = document.getElementById('desktop-view-mode-btn');
+            const btnText = document.getElementById('view-mode-text');
+            
+            triggerSlashTransition(
+                isAllSectionsMode ? "SCROLL MODE" : "MENU MODE", 
+                isAllSectionsMode ? "ALL SECTIONS // ENABLED" : "SINGLE PAGE // ENABLED"
+            );
+            playP5Sfx('slash_transition');
+            
+            setTimeout(() => {
+                if (isAllSectionsMode) {
+                    if (btnText) btnText.innerText = 'VIEW MODE: SCROLL SITE';
+                    if (btn) {
+                        btn.classList.remove('bg-zinc-900', 'text-white', 'hover:bg-p5cyan', 'hover:text-black');
+                        btn.classList.add('bg-p5cyan', 'text-black', 'hover:bg-zinc-900', 'hover:text-white');
+                    }
+
+                    document.querySelectorAll('.p5-section').forEach(sec => {
+                        sec.classList.remove('hidden');
+                        void sec.offsetWidth;
+                        sec.classList.add('p5-section-enter');
+                    });
+                    const title = document.getElementById('giant-banner-title');
+                    if (title) title.innerText = 'ALL SECTIONS (SCROLL)';
+                } else {
+                    if (btnText) btnText.innerText = 'VIEW MODE: GAME MENU';
+                    if (btn) {
+                        btn.classList.remove('bg-p5cyan', 'text-black', 'hover:bg-zinc-900', 'hover:text-white');
+                        btn.classList.add('bg-zinc-900', 'text-white', 'hover:bg-p5cyan', 'hover:text-black');
+                    }
+
+                    document.querySelectorAll('.p5-section').forEach(sec => {
+                        if (sec.id !== `section-${currentSection}`) {
+                            sec.classList.add('hidden');
+                            sec.classList.remove('p5-section-enter');
+                        }
+                    });
+                    if (sectionMeta[currentSection]) {
+                        const title = document.getElementById('giant-banner-title');
+                        const sub = document.getElementById('giant-banner-sub');
+                        const speech = document.getElementById('navi-speech-text');
+                        if (title) title.innerText = sectionMeta[currentSection].title;
+                        if (sub) sub.innerText = sectionMeta[currentSection].sub;
+                        if (speech) speech.innerText = sectionMeta[currentSection].speech;
+                    }
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            }, 300);
+        }
+
+        function renderPortfolioCards() {
+            const container = document.getElementById('portfolio-grid-container');
+            if (!container) return;
+            container.innerHTML = '';
+            
+            const filtered = currentFilter === 'all' 
+                ? portfolioProjects 
+                : portfolioProjects.filter(p => p.category.includes(currentFilter));
+
+            filtered.forEach((p, index) => {
+                const isGrid = currentLayout === 'grid';
+                const absoluteIndex = portfolioProjects.findIndex(proj => proj.id === p.id);
+                const card = document.createElement('div');
+                card.className = `p5-comic-box group cursor-pointer p5-stagger-item ${isGrid ? 'flex flex-col' : 'flex flex-col sm:flex-row'}`;
+                card.style.setProperty('--stagger-index', index);
+                
+                card.onmouseenter = () => playP5Sfx('hover');
+                
+                card.onclick = () => {
+                    playP5Sfx('preview');
+                    updateInspector(absoluteIndex);
+                    document.getElementById('portfolio-inspector').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                };
+
+                const shortDesc = p.descId.length > 95 ? p.descId.substring(0, 95) + '...' : p.descId;
+                const chipsHtml = p.deliverables.slice(0, 4).map(d => 
+                    `<span class="bg-zinc-900 text-p5cyan font-display text-[9px] px-1.5 py-0.5 border border-p5cyan transform -skew-x-12 whitespace-nowrap">${d}</span>`
+                ).join('');
+
+                card.innerHTML = `
+                    <div class="relative bg-black border-b-3 sm:border-b-4 ${isGrid ? 'border-white' : 'sm:border-b-0 sm:border-r-4 border-white'} overflow-hidden ${isGrid ? 'h-48' : 'w-full sm:w-2/5 h-48 sm:h-auto'}">
+                        <img src="${p.img}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="${p.title}" onerror="this.src='https://placehold.co/400x300/111115/e60012?text=IMAGE'">
+                        <span class="absolute top-3 left-3 bg-p5red text-white font-display text-xs px-2.5 py-0.5 transform -skew-x-12 border border-white">
+                            FILE #${p.id.toString().padStart(2, '0')}
+                        </span>
+                        <span class="absolute bottom-3 right-3 bg-black text-p5cyan font-display text-[10px] px-2.5 py-1 transform -skew-x-12 border-2 border-p5cyan z-10 shadow-[2px_2px_0_#fff]">
+                            ${p.badge}
+                        </span>
+                    </div>
+                    <div class="p-4 bg-zinc-950 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-[10px] font-bold text-p5red uppercase mb-1 block tracking-wider">${p.role}</span>
+                            <h4 class="font-display text-2xl text-white leading-tight uppercase tracking-wide mb-3">${p.title}</h4>
+                            
+                            <div class="mb-3">
+                                <span class="text-[10px] text-p5yellow font-display tracking-widest block mb-1">★ PEKERJAAN:</span>
+                                <p class="text-[11px] sm:text-xs text-zinc-300 leading-snug font-medium">${shortDesc}</p>
+                            </div>
+                            
+                            <div class="flex flex-wrap gap-1.5 mb-4">
+                                ${chipsHtml}
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center pt-3 border-t-2 border-zinc-800 mt-2">
+                            <span class="text-[10px] text-zinc-400 font-display tracking-widest uppercase">SELECT IN DOSSIER</span>
+                            <button onclick="event.stopPropagation(); openFullscreenModal(${absoluteIndex})" class="bg-p5red hover:bg-white text-white hover:text-black font-display text-xs px-4 py-1 transform -skew-x-12 border border-white flex items-center gap-1.5 transition-colors shadow-[2px_2px_0_#000]">
+                                ZOOM <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+            lucide.createIcons();
+        }
+
+        function filterPortfolio(filter) {
+            currentFilter = filter;
+            document.querySelectorAll('.p5-filter-btn').forEach(btn => {
+                if (btn.dataset.filter === filter) {
+                    btn.classList.add('bg-p5red', 'text-white', 'border-white', 'shadow-[3px_3px_0_#00e5ff]');
+                    btn.classList.remove('bg-zinc-900', 'text-zinc-300', 'border-zinc-600', 'hover:bg-zinc-800');
+                } else {
+                    btn.classList.remove('bg-p5red', 'text-white', 'border-white', 'shadow-[3px_3px_0_#00e5ff]');
+                    btn.classList.add('bg-zinc-900', 'text-zinc-300', 'border-zinc-600', 'hover:bg-zinc-800');
+                }
+            });
+            renderPortfolioCards();
+        }
+
+        function setPortfolioLayout(layout) {
+            currentLayout = layout;
+            const gridBtn = document.getElementById('layout-grid-btn');
+            const sideBtn = document.getElementById('layout-side-btn');
+            
+            if (layout === 'grid') {
+                gridBtn.className = 'bg-p5cyan text-black font-display text-xs sm:text-sm px-2.5 sm:px-3 py-1.5 border-2 border-black transform -skew-x-12 flex items-center gap-1 cursor-pointer min-h-[40px]';
+                sideBtn.className = 'bg-zinc-900 text-white font-display text-xs sm:text-sm px-2.5 sm:px-3 py-1.5 border-2 border-white transform -skew-x-12 flex items-center gap-1 cursor-pointer min-h-[40px]';
+                document.getElementById('portfolio-grid-container').className = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-7';
+            } else {
+                sideBtn.className = 'bg-p5cyan text-black font-display text-xs sm:text-sm px-2.5 sm:px-3 py-1.5 border-2 border-black transform -skew-x-12 flex items-center gap-1 cursor-pointer min-h-[40px]';
+                gridBtn.className = 'bg-zinc-900 text-white font-display text-xs sm:text-sm px-2.5 sm:px-3 py-1.5 border-2 border-white transform -skew-x-12 flex items-center gap-1 cursor-pointer min-h-[40px]';
+                document.getElementById('portfolio-grid-container').className = 'flex flex-col gap-5 sm:gap-7';
+            }
+            renderPortfolioCards();
+        }
+
+        function updateInspector(index) {
+            if (index < 0) index = portfolioProjects.length - 1;
+            if (index >= portfolioProjects.length) index = 0;
+            currentInspectorIndex = index;
+            
+            const p = portfolioProjects[index];
+            const inspector = document.getElementById('portfolio-inspector');
+            if (inspector) {
+                inspector.classList.remove('dossier-preview-pulse');
+                void inspector.offsetWidth;
+                inspector.classList.add('dossier-preview-pulse');
+            }
+
+            document.getElementById('inspector-index').innerText = `FILE #${(index + 1).toString().padStart(2, '0')} / ${portfolioProjects.length}`;
+            document.getElementById('inspector-img').src = p.img;
+            document.getElementById('inspector-cat').innerText = p.badge;
+            document.getElementById('inspector-role').innerText = p.role;
+            document.getElementById('inspector-title').innerText = p.title;
+            document.getElementById('inspector-desc-id').innerText = p.descId;
+            document.getElementById('inspector-desc-en').innerText = p.descEn;
+
+            const delivContainer = document.getElementById('inspector-deliverables');
+            delivContainer.innerHTML = '';
+            p.deliverables.forEach(d => {
+                const span = document.createElement('span');
+                span.className = 'bg-zinc-800 text-white font-display text-[10px] sm:text-[11px] px-2 py-0.5 border border-zinc-600 transform -skew-x-12';
+                span.innerText = d;
+                delivContainer.appendChild(span);
+            });
+        }
+
+        function nextProject() {
+            updateInspector(currentInspectorIndex + 1);
+        }
+
+        function prevProject() {
+            updateInspector(currentInspectorIndex - 1);
+        }
+
+        function openFullscreenModal(index) {
+            playP5Sfx('preview');
+            const modal = document.getElementById('fullscreen-modal');
+            if (modal) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                updateModalContent(index);
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeFullscreenModal() {
+            playP5Sfx('slash_transition');
+            const modal = document.getElementById('fullscreen-modal');
+            if (modal) {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        function updateModalContent(index) {
+            if (index < 0) index = portfolioProjects.length - 1;
+            if (index >= portfolioProjects.length) index = 0;
+            currentInspectorIndex = index;
+
+            const p = portfolioProjects[index];
+            document.getElementById('modal-img').src = p.img;
+            document.getElementById('modal-cat').innerText = p.badge;
+            document.getElementById('modal-role').innerText = p.role;
+            document.getElementById('modal-title').innerText = p.title;
+            document.getElementById('modal-desc-id').innerText = p.descId;
+            document.getElementById('modal-desc-en').innerText = p.descEn;
+
+            const delivContainer = document.getElementById('modal-deliverables');
+            delivContainer.innerHTML = '';
+            p.deliverables.forEach(d => {
+                const span = document.createElement('span');
+                span.className = 'bg-black text-p5cyan font-display text-[10px] sm:text-[11px] px-2 py-0.5 border border-zinc-700 transform -skew-x-12';
+                span.innerText = d;
+                delivContainer.appendChild(span);
+            });
+        }
+
+        function modalStep(step) {
+            playP5Sfx('preview');
+            updateModalContent(currentInspectorIndex + step);
+        }
+
+        // --- PERSONAL PROJECTS RENDER & MODAL LOGIC ---
+        function renderPersonalCards() {
+            const container = document.getElementById('personal-grid-container');
+            if (!container) return;
+            container.innerHTML = '';
+            
+            personalProjects.forEach((p, index) => {
+                const card = document.createElement('div');
+                card.className = `relative cursor-pointer group border-2 border-zinc-800 bg-zinc-950 overflow-hidden hover:border-p5red transition-colors p-1 p5-stagger-item shadow-[3px_3px_0_#000]`;
+                card.style.setProperty('--stagger-index', index);
+                card.onmouseenter = () => playP5Sfx('hover');
+                card.onclick = () => openPersonalModal(index);
+
+                card.innerHTML = `
+                    <div class="bg-black relative aspect-[3/4] overflow-hidden border border-zinc-800">
+                        <img src="${p.img}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="${p.title}" onerror="this.src='https://placehold.co/400x500/111115/e60012?text=IMG'">
+                        <div class="absolute inset-0 border-2 border-black/40 pointer-events-none"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </div>
+                    <div class="pt-1.5 pb-1 text-center">
+                        <div class="text-[9px] sm:text-[10px] text-p5cyan font-bold truncate px-1 uppercase tracking-wider">${p.title}</div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function openPersonalModal(index) {
+            playP5Sfx('preview');
+            const modal = document.getElementById('personal-modal');
+            if (modal) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                updatePersonalModalContent(index);
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closePersonalModal() {
+            playP5Sfx('slash_transition');
+            const modal = document.getElementById('personal-modal');
+            if (modal) {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        function updatePersonalModalContent(index) {
+            if (index < 0) index = personalProjects.length - 1;
+            if (index >= personalProjects.length) index = 0;
+            currentPersonalIndex = index;
+
+            const p = personalProjects[index];
+            const prevP = personalProjects[index - 1 < 0 ? personalProjects.length - 1 : index - 1];
+            const nextP = personalProjects[index + 1 >= personalProjects.length ? 0 : index + 1];
+
+            document.getElementById('personal-modal-img').src = p.img;
+            document.getElementById('personal-modal-title').innerText = p.title;
+            document.getElementById('personal-modal-type').innerText = p.type;
+            document.getElementById('personal-modal-desc').innerText = p.desc;
+            document.getElementById('personal-modal-index').innerText = `NO. ${String(index + 1).padStart(2, '0')} / ${personalProjects.length}`;
+
+            document.getElementById('personal-img-left').src = prevP.img;
+            document.getElementById('personal-img-right').src = nextP.img;
+        }
+
+        function personalModalStep(step) {
+            playP5Sfx('preview');
+            const activeCard = document.getElementById('personal-active-card');
+            
+            activeCard.style.transition = 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease-out';
+            if(step > 0) {
+                activeCard.style.transform = 'translateX(-60%) rotateY(-20deg) scale(0.8)';
+                activeCard.style.opacity = '0';
+            } else {
+                activeCard.style.transform = 'translateX(60%) rotateY(20deg) scale(0.8)';
+                activeCard.style.opacity = '0';
+            }
+
+            setTimeout(() => {
+                updatePersonalModalContent(currentPersonalIndex + step);
+                
+                activeCard.style.transition = 'none';
+                if(step > 0) {
+                    activeCard.style.transform = 'translateX(60%) rotateY(20deg) scale(0.8)';
+                } else {
+                    activeCard.style.transform = 'translateX(-60%) rotateY(-20deg) scale(0.8)';
+                }
+                
+                void activeCard.offsetWidth;
+                
+                activeCard.style.transition = 'transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.35s ease-out';
+                activeCard.style.transform = 'translateZ(0) rotateY(0) scale(1)';
+                activeCard.style.opacity = '1';
+            }, 250);
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeFullscreenModal();
+                closePersonalModal();
+            }
+            if (e.key === 'ArrowRight') {
+                if (!document.getElementById('fullscreen-modal').classList.contains('hidden')) modalStep(1);
+                if (!document.getElementById('personal-modal').classList.contains('hidden')) personalModalStep(1);
+            }
+            if (e.key === 'ArrowLeft') {
+                if (!document.getElementById('fullscreen-modal').classList.contains('hidden')) modalStep(-1);
+                if (!document.getElementById('personal-modal').classList.contains('hidden')) personalModalStep(-1);
+            }
+        });
+
+        window.onload = function () {
+            startBootSequence();
+            renderPortfolioCards();
+            renderPersonalCards();
+            updateInspector(0);
+            startBgmPlayback();
+            lucide.createIcons();
+        };
+    </script>
+</body>
+</html>
